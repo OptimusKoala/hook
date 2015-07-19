@@ -8,11 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		9048D3411B51722600F88FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3401B51722600F88FE3 /* AppDelegate.swift */; };
-		9048D3431B51722600F88FE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3421B51722600F88FE3 /* ViewController.swift */; };
 		9048D3461B51722600F88FE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3441B51722600F88FE3 /* Main.storyboard */; };
 		9048D3481B51722600F88FE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3471B51722600F88FE3 /* Images.xcassets */; };
 		9048D34B1B51722600F88FE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3491B51722600F88FE3 /* LaunchScreen.xib */; };
 		9048D3571B51722600F88FE3 /* hookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3561B51722600F88FE3 /* hookTests.swift */; };
+		9048D3691B5172DE00F88FE3 /* coquine1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3611B5172DE00F88FE3 /* coquine1.jpg */; };
+		9048D36A1B5172DE00F88FE3 /* coquine2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3621B5172DE00F88FE3 /* coquine2.jpg */; };
+		9048D36B1B5172DE00F88FE3 /* coquine3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3631B5172DE00F88FE3 /* coquine3.jpg */; };
+		9048D36C1B5172DE00F88FE3 /* coquine4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3641B5172DE00F88FE3 /* coquine4.jpg */; };
+		9048D36D1B5172DE00F88FE3 /* coquine5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3651B5172DE00F88FE3 /* coquine5.jpg */; };
+		9048D36E1B5172DE00F88FE3 /* coquine6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3661B5172DE00F88FE3 /* coquine6.jpg */; };
+		9048D3701B5172DE00F88FE3 /* loginWallpaper.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */; };
+		9048D3721B5172F800F88FE3 /* icone_hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3711B5172F800F88FE3 /* icone_hook.png */; };
+		9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3731B5178A400F88FE3 /* MainViewController.swift */; };
+		9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3751B517A5F00F88FE3 /* cellData.swift */; };
+		9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3791B517C9100F88FE3 /* CellViewController.swift */; };
+		9048D37D1B5192B600F88FE3 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37B1B5192B600F88FE3 /* chat.png */; };
+		9048D37E1B5192B600F88FE3 /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37C1B5192B600F88FE3 /* hook.png */; };
+		9048D3851B52DE7D00F88FE3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */; };
+		9048D3921B52F31200F88FE3 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3911B52F31200F88FE3 /* menu.png */; };
+		9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3931B532A2700F88FE3 /* HooksViewController.swift */; };
+		9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */; };
+		9048D3991B53E3E200F88FE3 /* empty_heart_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3971B53E3E200F88FE3 /* empty_heart_icon.png */; };
+		9048D39A1B53E3E200F88FE3 /* full_heart_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3981B53E3E200F88FE3 /* full_heart_icon.png */; };
+		907008A21B56FC9000C7B740 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008A11B56FC9000C7B740 /* PhotoViewController.swift */; };
+		907008A41B5701F100C7B740 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008A31B5701F100C7B740 /* PhotoViewCell.swift */; };
+		907008A81B5829F500C7B740 /* profile_hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 907008A71B5829F500C7B740 /* profile_hook.png */; };
+		907008AA1B5829FC00C7B740 /* profile_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 907008A91B5829FC00C7B740 /* profile_chat.png */; };
+		907008AC1B582A0200C7B740 /* profile_cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 907008AB1B582A0200C7B740 /* profile_cog.png */; };
+		907008B01B582DFB00C7B740 /* michal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 907008AF1B582DFB00C7B740 /* michal.jpg */; };
+		907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B11B582F8800C7B740 /* MenuViewController.swift */; };
+		907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B51B5835A100C7B740 /* MenuViewCell.swift */; };
+		907008B81B58467500C7B740 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B71B58467500C7B740 /* ContactViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +56,42 @@
 		9048D33B1B51722600F88FE3 /* hook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9048D33F1B51722600F88FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9048D3401B51722600F88FE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9048D3421B51722600F88FE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9048D3451B51722600F88FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9048D3471B51722600F88FE3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9048D34A1B51722600F88FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9048D3501B51722600F88FE3 /* hookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9048D3551B51722600F88FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9048D3561B51722600F88FE3 /* hookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hookTests.swift; sourceTree = "<group>"; };
+		9048D3611B5172DE00F88FE3 /* coquine1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine1.jpg; path = ../../../Downloads/coquine1.jpg; sourceTree = "<group>"; };
+		9048D3621B5172DE00F88FE3 /* coquine2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine2.jpg; path = ../../../Downloads/coquine2.jpg; sourceTree = "<group>"; };
+		9048D3631B5172DE00F88FE3 /* coquine3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine3.jpg; path = ../../../Downloads/coquine3.jpg; sourceTree = "<group>"; };
+		9048D3641B5172DE00F88FE3 /* coquine4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine4.jpg; path = ../../../Downloads/coquine4.jpg; sourceTree = "<group>"; };
+		9048D3651B5172DE00F88FE3 /* coquine5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine5.jpg; path = ../../../Downloads/coquine5.jpg; sourceTree = "<group>"; };
+		9048D3661B5172DE00F88FE3 /* coquine6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine6.jpg; path = ../../../Downloads/coquine6.jpg; sourceTree = "<group>"; };
+		9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginWallpaper.jpeg; path = ../../../Downloads/loginWallpaper.jpeg; sourceTree = "<group>"; };
+		9048D3711B5172F800F88FE3 /* icone_hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icone_hook.png; path = ../../../Downloads/icone_hook.png; sourceTree = "<group>"; };
+		9048D3731B5178A400F88FE3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9048D3751B517A5F00F88FE3 /* cellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellData.swift; sourceTree = "<group>"; };
+		9048D3791B517C9100F88FE3 /* CellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
+		9048D37B1B5192B600F88FE3 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		9048D37C1B5192B600F88FE3 /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook.png; sourceTree = "<group>"; };
+		9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hook-Bridging-Header.h"; sourceTree = "<group>"; };
+		9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		9048D3911B52F31200F88FE3 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		9048D3931B532A2700F88FE3 /* HooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HooksViewController.swift; sourceTree = "<group>"; };
+		9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourHooksViewController.swift; sourceTree = "<group>"; };
+		9048D3971B53E3E200F88FE3 /* empty_heart_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_heart_icon.png; sourceTree = "<group>"; };
+		9048D3981B53E3E200F88FE3 /* full_heart_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_heart_icon.png; sourceTree = "<group>"; };
+		907008A11B56FC9000C7B740 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		907008A31B5701F100C7B740 /* PhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		907008A71B5829F500C7B740 /* profile_hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_hook.png; sourceTree = "<group>"; };
+		907008A91B5829FC00C7B740 /* profile_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_chat.png; sourceTree = "<group>"; };
+		907008AB1B582A0200C7B740 /* profile_cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_cog.png; sourceTree = "<group>"; };
+		907008AF1B582DFB00C7B740 /* michal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = michal.jpg; sourceTree = "<group>"; };
+		907008B11B582F8800C7B740 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		907008B51B5835A100C7B740 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		907008B71B58467500C7B740 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +133,23 @@
 		9048D33D1B51722600F88FE3 /* hook */ = {
 			isa = PBXGroup;
 			children = (
+				9048D3811B52DDEC00F88FE3 /* menu */,
+				9048D3601B5172CB00F88FE3 /* images */,
 				9048D3401B51722600F88FE3 /* AppDelegate.swift */,
-				9048D3421B51722600F88FE3 /* ViewController.swift */,
 				9048D3441B51722600F88FE3 /* Main.storyboard */,
 				9048D3471B51722600F88FE3 /* Images.xcassets */,
 				9048D3491B51722600F88FE3 /* LaunchScreen.xib */,
 				9048D33E1B51722600F88FE3 /* Supporting Files */,
+				9048D3731B5178A400F88FE3 /* MainViewController.swift */,
+				9048D3751B517A5F00F88FE3 /* cellData.swift */,
+				9048D3791B517C9100F88FE3 /* CellViewController.swift */,
+				9048D3931B532A2700F88FE3 /* HooksViewController.swift */,
+				9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */,
+				907008A11B56FC9000C7B740 /* PhotoViewController.swift */,
+				907008A31B5701F100C7B740 /* PhotoViewCell.swift */,
+				907008B11B582F8800C7B740 /* MenuViewController.swift */,
+				907008B51B5835A100C7B740 /* MenuViewCell.swift */,
+				907008B71B58467500C7B740 /* ContactViewCell.swift */,
 			);
 			path = hook;
 			sourceTree = "<group>";
@@ -110,6 +177,40 @@
 				9048D3551B51722600F88FE3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9048D3601B5172CB00F88FE3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9048D3971B53E3E200F88FE3 /* empty_heart_icon.png */,
+				9048D3981B53E3E200F88FE3 /* full_heart_icon.png */,
+				9048D37B1B5192B600F88FE3 /* chat.png */,
+				9048D37C1B5192B600F88FE3 /* hook.png */,
+				907008A71B5829F500C7B740 /* profile_hook.png */,
+				9048D3911B52F31200F88FE3 /* menu.png */,
+				9048D3711B5172F800F88FE3 /* icone_hook.png */,
+				907008AB1B582A0200C7B740 /* profile_cog.png */,
+				907008A91B5829FC00C7B740 /* profile_chat.png */,
+				907008AF1B582DFB00C7B740 /* michal.jpg */,
+				9048D3611B5172DE00F88FE3 /* coquine1.jpg */,
+				9048D3621B5172DE00F88FE3 /* coquine2.jpg */,
+				9048D3631B5172DE00F88FE3 /* coquine3.jpg */,
+				9048D3641B5172DE00F88FE3 /* coquine4.jpg */,
+				9048D3651B5172DE00F88FE3 /* coquine5.jpg */,
+				9048D3661B5172DE00F88FE3 /* coquine6.jpg */,
+				9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		9048D3811B52DDEC00F88FE3 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */,
+				9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */,
+				9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */,
+			);
+			name = menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +293,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9048D3921B52F31200F88FE3 /* menu.png in Resources */,
+				907008AC1B582A0200C7B740 /* profile_cog.png in Resources */,
+				9048D3691B5172DE00F88FE3 /* coquine1.jpg in Resources */,
+				907008A81B5829F500C7B740 /* profile_hook.png in Resources */,
+				9048D36A1B5172DE00F88FE3 /* coquine2.jpg in Resources */,
+				9048D36B1B5172DE00F88FE3 /* coquine3.jpg in Resources */,
+				9048D39A1B53E3E200F88FE3 /* full_heart_icon.png in Resources */,
+				9048D3721B5172F800F88FE3 /* icone_hook.png in Resources */,
 				9048D3461B51722600F88FE3 /* Main.storyboard in Resources */,
+				9048D3701B5172DE00F88FE3 /* loginWallpaper.jpeg in Resources */,
+				9048D36D1B5172DE00F88FE3 /* coquine5.jpg in Resources */,
+				907008B01B582DFB00C7B740 /* michal.jpg in Resources */,
+				9048D36E1B5172DE00F88FE3 /* coquine6.jpg in Resources */,
 				9048D34B1B51722600F88FE3 /* LaunchScreen.xib in Resources */,
+				9048D3991B53E3E200F88FE3 /* empty_heart_icon.png in Resources */,
 				9048D3481B51722600F88FE3 /* Images.xcassets in Resources */,
+				9048D37E1B5192B600F88FE3 /* hook.png in Resources */,
+				9048D36C1B5172DE00F88FE3 /* coquine4.jpg in Resources */,
+				9048D37D1B5192B600F88FE3 /* chat.png in Resources */,
+				907008AA1B5829FC00C7B740 /* profile_chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +330,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9048D3431B51722600F88FE3 /* ViewController.swift in Sources */,
 				9048D3411B51722600F88FE3 /* AppDelegate.swift in Sources */,
+				9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */,
+				9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */,
+				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
+				907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */,
+				9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */,
+				907008A21B56FC9000C7B740 /* PhotoViewController.swift in Sources */,
+				9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */,
+				9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */,
+				9048D3851B52DE7D00F88FE3 /* SWRevealViewController.m in Sources */,
+				907008A41B5701F100C7B740 /* PhotoViewCell.swift in Sources */,
+				907008B81B58467500C7B740 /* ContactViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +468,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "hook/hook-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +481,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "hook/hook-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +542,7 @@
 				9048D35C1B51722600F88FE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9048D35D1B51722600F88FE3 /* Build configuration list for PBXNativeTarget "hookTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +551,7 @@
 				9048D35F1B51722600F88FE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
