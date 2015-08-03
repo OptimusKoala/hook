@@ -248,16 +248,15 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: Life Cycle
     
-    @IBOutlet weak var backButton: UIButton!
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.setup()
          // -------------------------
-        let width = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 12)
+        /*let width = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 12)
         let height = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 20)
         backButton.addConstraint(width)
-        backButton.addConstraint(height)
+        backButton.addConstraint(height)*/
         // -------------------------
     }
     
@@ -276,10 +275,9 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         self.unregisterKeyboardObservers()
     }
     
-    @IBAction func backAction(sender: UIButton) {
+    @IBAction func backAction(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("backSegue", sender: nil)
     }
-    
     
     deinit {
         /*

@@ -133,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7Q-CN-7ui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2313" y="-269"/>
+            <point key="canvasLocation" x="2331" y="-269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ouc-H8-pBJ">
@@ -166,19 +166,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discution" id="qPB-Sm-fGu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="done" id="Zbg-lC-hcF">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="llZ-y5-rSB">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="backButton.png"/>
-                                <connections>
-                                    <action selector="backAction:" destination="6dG-Fd-zbN" eventType="touchUpInside" id="8GA-h6-gdW"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="backButton.png" style="done" id="Zbg-lC-hcF">
+                            <connections>
+                                <action selector="backAction:" destination="6dG-Fd-zbN" id="ka7-d3-PqP"/>
+                            </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="T3F-U7-lsz"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="llZ-y5-rSB" id="sgM-i6-Yat"/>
                         <segue destination="X4o-n8-0F3" kind="show" identifier="backSegue" id="7jF-PO-gtC"/>
                     </connections>
                 </viewController>
@@ -943,7 +938,7 @@
         <image name="profile_hook.png" width="63" height="59"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Bk-jR-HKS"/>
+        <segue reference="7jF-PO-gtC"/>
         <segue reference="mwY-V0-xyP"/>
     </inferredMetricsTieBreakers>
 </document>
