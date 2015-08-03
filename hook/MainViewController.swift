@@ -16,6 +16,10 @@ class MainViewController: UITableViewController {
     var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
     var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
     var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myImage: "coquine4.jpg", myAge: "23", isConnect: true)
+    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myImage: "coquine5.jpg", myAge: "20", isConnect: true)
+    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myImage: "coquine6.jpg", myAge: "19", isConnect: false)
+    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myImage: "coquine2.jpg", myAge: "23", isConnect: false)
     
     // hook images
     let fullHeart = UIImage(named: "full_heart_icon")
@@ -32,6 +36,11 @@ class MainViewController: UITableViewController {
         dataList.insert(myData, atIndex: 0)
         dataList.insert(myData2, atIndex: 1)
         dataList.insert(myData3, atIndex: 2)
+        dataList.insert(myData4, atIndex: 3)
+        dataList.insert(myData5, atIndex: 4)
+        dataList.insert(myData6, atIndex: 5)
+        dataList.insert(myData7, atIndex: 6)
+        
         //-----------------------------------
         // Print and init menu button 
         if self.revealViewController() != nil {

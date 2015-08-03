@@ -13,7 +13,7 @@ let reuseIdentifier = "photosCell"
 class PhotoViewController: UICollectionViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var myImage = UIImage(named: "coquine6")
+    var myImage = UIImage(named: "coquine6.jpg")
     
     override func viewDidLoad() {
         super.viewDidLoad()

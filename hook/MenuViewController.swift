@@ -10,9 +10,9 @@ import UIKit
 
 class MenuViewController: UITableViewController {
 
-    @IBOutlet var userTableView: UITableView!
+    
+    @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var contactTableView: UITableView!
-
     // list of contacts
     // list of data for cells
     var contactList = [String]()
@@ -22,7 +22,12 @@ class MenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // resize contact tableview to enable scroll
+        contactTableView.frame = CGRectMake(0, 0, 0, 250)
+        
         // Add the delegate and datasource for contact TableView
+        userTableView.delegate = self
+        userTableView.dataSource = self
         contactTableView.delegate = self
         contactTableView.dataSource = self
         
@@ -33,6 +38,10 @@ class MenuViewController: UITableViewController {
         contactList.insert("Coquine 4", atIndex: 3)
         contactList.insert("Coquine 5", atIndex: 4)
         contactList.insert("Coquine 6", atIndex: 5)
+        contactList.insert("Coquine 3", atIndex: 6)
+        contactList.insert("Coquine 4", atIndex: 7)
+        contactList.insert("Coquine 5", atIndex: 8)
+        contactList.insert("Coquine 6", atIndex: 9)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -101,6 +110,10 @@ class MenuViewController: UITableViewController {
         }
         
         // ---------------------------
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     /*
