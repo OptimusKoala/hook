@@ -112,6 +112,7 @@ class MenuViewController: UITableViewController {
         // ---------------------------
     }
     
+    //Function to hide status bar
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
