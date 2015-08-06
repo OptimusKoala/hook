@@ -47,8 +47,6 @@
 		907008B81B58467500C7B740 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B71B58467500C7B740 /* ContactViewCell.swift */; };
 		90A324AF1B5BBD3700299E57 /* icone_hook_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */; };
 		90F8F5061B6830FD00541B06 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */; };
-		90F8F50B1B6AC62A00541B06 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 90F8F50A1B6AC62A00541B06 /* back.png */; };
-		90F8F50F1B6ACB1A00541B06 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 90F8F50E1B6ACB1A00541B06 /* backButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,8 +106,6 @@
 		907008B71B58467500C7B740 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_hook_blue.png; sourceTree = "<group>"; };
 		90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
-		90F8F50A1B6AC62A00541B06 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		90F8F50E1B6ACB1A00541B06 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,8 +201,6 @@
 		9048D3601B5172CB00F88FE3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				90F8F50E1B6ACB1A00541B06 /* backButton.png */,
-				90F8F50A1B6AC62A00541B06 /* back.png */,
 				9048D3971B53E3E200F88FE3 /* empty_heart_icon.png */,
 				9048D3981B53E3E200F88FE3 /* full_heart_icon.png */,
 				9048D37B1B5192B600F88FE3 /* chat.png */,
@@ -358,10 +352,8 @@
 				9049263B1B653ACC0041BB54 /* icone_smal.png in Resources */,
 				9048D3481B51722600F88FE3 /* Images.xcassets in Resources */,
 				9048D37E1B5192B600F88FE3 /* hook.png in Resources */,
-				90F8F50B1B6AC62A00541B06 /* back.png in Resources */,
 				9048D36C1B5172DE00F88FE3 /* coquine4.jpg in Resources */,
 				9048D37D1B5192B600F88FE3 /* chat.png in Resources */,
-				90F8F50F1B6ACB1A00541B06 /* backButton.png in Resources */,
 				907008AA1B5829FC00C7B740 /* profile_chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qV5-U1-1yZ" id="3am-fm-XE1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RgO-EH-EWY">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RgO-EH-EWY">
                                             <rect key="frame" x="21" y="-1" width="136" height="117.5"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="18" y="13" width="86" height="85.5"/>
@@ -73,7 +73,7 @@
                                                 <rect key="frame" x="274" y="17" width="33" height="33"/>
                                             </variation>
                                             <connections>
-                                                <segue destination="IuE-Ui-tHz" kind="show" id="mwY-V0-xyP"/>
+                                                <segue destination="6dG-Fd-zbN" kind="show" id="VOQ-gk-Oqk"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="na4-zv-2S1">
@@ -135,23 +135,6 @@
             </objects>
             <point key="canvasLocation" x="2331" y="-269"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ouc-H8-pBJ">
-            <objects>
-                <navigationController storyboardIdentifier="messageController" id="IuE-Ui-tHz" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Skf-Lp-Sbz"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m0K-3Z-ALd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6dG-Fd-zbN" kind="relationship" relationship="rootViewController" id="S98-eW-GOk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eOG-1O-sCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3073.5" y="-269"/>
-        </scene>
         <!--message-->
         <scene sceneID="UBY-Uv-DDn">
             <objects>
@@ -166,20 +149,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discution" id="qPB-Sm-fGu">
-                        <barButtonItem key="leftBarButtonItem" image="backButton.png" style="done" id="Zbg-lC-hcF">
-                            <connections>
-                                <action selector="backAction:" destination="6dG-Fd-zbN" id="ka7-d3-PqP"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="T3F-U7-lsz"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="X4o-n8-0F3" kind="show" identifier="backSegue" id="7jF-PO-gtC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYq-r9-rPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3852" y="-269"/>
+            <point key="canvasLocation" x="3123" y="-269"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="r2i-YU-xvQ">
@@ -716,7 +691,7 @@
                                                 <rect key="frame" x="279" y="30" width="36" height="39"/>
                                             </variation>
                                             <connections>
-                                                <segue destination="IuE-Ui-tHz" kind="show" id="IfY-MV-Aab"/>
+                                                <segue destination="6dG-Fd-zbN" kind="show" id="LOK-6v-Fai"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -926,7 +901,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backButton.png" width="12" height="20"/>
         <image name="chat.png" width="63" height="59"/>
         <image name="empty_heart_icon.png" width="200" height="189"/>
         <image name="full_heart_icon.png" width="200" height="189"/>
@@ -938,7 +912,7 @@
         <image name="profile_hook.png" width="63" height="59"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7jF-PO-gtC"/>
-        <segue reference="mwY-V0-xyP"/>
+        <segue reference="MUs-h4-ECJ"/>
+        <segue reference="LOK-6v-Fai"/>
     </inferredMetricsTieBreakers>
 </document>

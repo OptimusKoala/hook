@@ -10,22 +10,25 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    var userFB : String = "lol"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         if (FBSDKAccessToken.currentAccessToken() == nil)
         {
-            // User is already logged in, do work such as go to next view controller.
+            // User is not already logged
             println("No Logged")
-            // Or Show Logout Button
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            //self.returnUserData()
+            self.returnUserData()
         }
         else
         {
+            // User is already logged
+            self.returnUserData()
             println("Logged to",FBSDKAccessToken.currentAccessToken())
             performSegueWithIdentifier("Login", sender: self)
         }
@@ -52,7 +55,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Do work
             }
-            
             self.returnUserData()
         }
         
@@ -75,7 +77,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             else
             {
                 let userName : String = result.valueForKey("name") as! String
-                let userEmail : String = result.valueForKey("email") as! String
+                self.userFB = userName
             }
         })
     }

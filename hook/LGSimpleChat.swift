@@ -275,10 +275,6 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         self.unregisterKeyboardObservers()
     }
     
-    @IBAction func backAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("backSegue", sender: nil)
-    }
-    
     deinit {
         /*
         Need to remove delegate and datasource or they will try to send scrollView messages.
