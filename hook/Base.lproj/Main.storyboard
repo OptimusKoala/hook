@@ -522,9 +522,6 @@
                                                 <include reference="aP7-EO-ptm"/>
                                             </mask>
                                         </variation>
-                                        <connections>
-                                            <segue destination="DMk-NX-UdM" kind="show" identifier="Login" id="9XT-Jx-e2U"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -591,6 +588,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="OUl-ao-6YN"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="fbButton" destination="gZf-n7-KKh" id="nHI-aC-J4L"/>
+                        <segue destination="DMk-NX-UdM" kind="show" identifier="Login" id="sny-0W-Ors"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGe-77-JSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,7 +10,12 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    var userFB : String = "lol"
+    @IBOutlet weak var fbButton: FBSDKLoginButton!
+    var userFB : String = "error" {
+        didSet {
+            self.stringUpdated()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,34 +24,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         {
             // User is not already logged
             println("No Logged")
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-            self.returnUserData()
+            fbButton.readPermissions = ["public_profile", "email", "user_friends"]
+            fbButton.delegate = self
         }
         else
         {
-            // User is already logged
+            fbButton.readPermissions = ["public_profile", "email", "user_friends"]
+            fbButton.delegate = self
+            println("Already Logged")
             self.returnUserData()
-            println("Logged to",FBSDKAccessToken.currentAccessToken())
-            performSegueWithIdentifier("Login", sender: self)
         }
 
         
     }
     
     // Facebook Delegate Methods
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
+    func loginButton(connection: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
-        if ((error) != nil)
+        if (error != nil)
         {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
+            println("Error")
         }
         else {
             // If you ask for multiple permissions at once, you
@@ -55,9 +52,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Do work
             }
+            println("User logged in")
             self.returnUserData()
         }
-        
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -66,7 +63,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func returnUserData()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"])
+        // Launch asynchronous function
+        var userName : String = "error"
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil)
@@ -76,8 +75,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             else
             {
-                let userName : String = result.valueForKey("name") as! String
-                self.userFB = userName
+                self.userFB = result["email"] as! String
             }
         })
     }
@@ -85,6 +83,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func stringUpdated() {
+        
+        println("email is : \(userFB)")
+        performSegueWithIdentifier("Login", sender: self)
     }
     
 }
