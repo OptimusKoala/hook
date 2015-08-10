@@ -10,12 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    @IBOutlet weak var loading:UIActivityIndicatorView!
     @IBOutlet weak var fbButton: FBSDKLoginButton!
-    var userFB : String = "error" {
-        didSet {
-            self.stringUpdated()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +20,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         {
             // User is not already logged
             println("No Logged")
+            loading.hidden = true
             fbButton.readPermissions = ["public_profile", "email", "user_friends"]
             fbButton.delegate = self
         }
         else
         {
-            fbButton.readPermissions = ["public_profile", "email", "user_friends"]
-            fbButton.delegate = self
+            fbButton.hidden = true
             println("Already Logged")
-            self.returnUserData()
+            performSegueWithIdentifier("Login", sender: self)
         }
-
-        
     }
     
     // Facebook Delegate Methods
@@ -53,7 +47,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // Do work
             }
             println("User logged in")
-            self.returnUserData()
+            performSegueWithIdentifier("Login", sender: self)
         }
     }
     
@@ -61,34 +55,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         println("User Logged Out")
     }
     
-    func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"])
-        // Launch asynchronous function
-        var userName : String = "error"
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                self.userFB = result["email"] as! String
-            }
-        })
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func stringUpdated() {
-        
-        println("email is : \(userFB)")
-        performSegueWithIdentifier("Login", sender: self)
     }
     
 }

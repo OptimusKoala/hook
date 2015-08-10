@@ -523,35 +523,49 @@
                                             </mask>
                                         </variation>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="y78-y2-84D">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                        <color key="color" red="0.52302522622158976" green="0.61941681179876307" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="gZf-n7-KKh" secondAttribute="bottom" constant="195" id="7ky-9r-YpM"/>
+                                    <constraint firstItem="y78-y2-84D" firstAttribute="centerX" secondItem="gZf-n7-KKh" secondAttribute="centerX" id="8RF-Wp-Dot"/>
                                     <constraint firstItem="hyS-2W-xtd" firstAttribute="centerX" secondItem="CN5-ZM-0yJ" secondAttribute="centerX" id="9iq-YL-2r1"/>
                                     <constraint firstItem="gZf-n7-KKh" firstAttribute="centerX" secondItem="hyS-2W-xtd" secondAttribute="centerX" id="eU4-QY-ivI"/>
+                                    <constraint firstItem="gZf-n7-KKh" firstAttribute="top" secondItem="y78-y2-84D" secondAttribute="bottom" constant="23" id="iXK-1e-FnS">
+                                        <variation key="widthClass=compact" constant="-56"/>
+                                    </constraint>
                                     <constraint firstItem="hyS-2W-xtd" firstAttribute="top" secondItem="CN5-ZM-0yJ" secondAttribute="top" constant="55" id="pXu-9e-pK7"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="hyS-2W-xtd"/>
                                         <exclude reference="gZf-n7-KKh"/>
+                                        <exclude reference="y78-y2-84D"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="7ky-9r-YpM"/>
-                                        <exclude reference="eU4-QY-ivI"/>
                                         <exclude reference="9iq-YL-2r1"/>
                                         <exclude reference="pXu-9e-pK7"/>
+                                        <exclude reference="8RF-Wp-Dot"/>
+                                        <exclude reference="7ky-9r-YpM"/>
+                                        <exclude reference="eU4-QY-ivI"/>
+                                        <exclude reference="iXK-1e-FnS"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="hyS-2W-xtd"/>
                                         <include reference="gZf-n7-KKh"/>
+                                        <include reference="y78-y2-84D"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="7ky-9r-YpM"/>
-                                        <include reference="eU4-QY-ivI"/>
                                         <include reference="9iq-YL-2r1"/>
                                         <include reference="pXu-9e-pK7"/>
+                                        <include reference="8RF-Wp-Dot"/>
+                                        <include reference="7ky-9r-YpM"/>
+                                        <include reference="eU4-QY-ivI"/>
+                                        <include reference="iXK-1e-FnS"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -590,6 +604,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="fbButton" destination="gZf-n7-KKh" id="nHI-aC-J4L"/>
+                        <outlet property="loading" destination="y78-y2-84D" id="gWD-eQ-Eon"/>
                         <segue destination="DMk-NX-UdM" kind="show" identifier="Login" id="sny-0W-Ors"/>
                     </connections>
                 </viewController>

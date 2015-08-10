@@ -16,11 +16,15 @@ class MenuViewController: UITableViewController {
     // list of contacts
     // list of data for cells
     var contactList = [String]()
+    // Create fbUser object
+    let userFb : userFacebook = userFacebook()
     // my objects cells
-    var myData = cellData(myName: "Michal", myDescription: "Bouffeur de cul!", myImage: "michal.jpg", myAge: "22", isConnect: true)
-
+    var myData : cellData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Init user data
+        myData = cellData(myName: userFb.getUserName(), myDescription: "Bouffeur de cul!", myImage: "michal.jpg", myAge: "22", isConnect: true)
         
         // resize contact tableview to enable scroll
         contactTableView.frame = CGRectMake(0, 0, 0, 250)
