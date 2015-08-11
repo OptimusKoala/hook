@@ -45,6 +45,12 @@
 		907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B11B582F8800C7B740 /* MenuViewController.swift */; };
 		907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B51B5835A100C7B740 /* MenuViewCell.swift */; };
 		907008B81B58467500C7B740 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B71B58467500C7B740 /* ContactViewCell.swift */; };
+		907147231B7A47D100F19C48 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */; };
+		909EB8C31B78C403006661FC /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EB8C21B78C403006661FC /* edit.png */; };
+		909EB8C91B78F30B006661FC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8C81B78F30B006661FC /* ProfileViewController.swift */; };
+		909EB8CB1B79EEF3006661FC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */; };
+		909EB8CF1B79F072006661FC /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EB8CE1B79F072006661FC /* photo.png */; };
+		909EB8D11B79F970006661FC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8D01B79F970006661FC /* ConfigViewController.swift */; };
 		90A324AF1B5BBD3700299E57 /* icone_hook_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */; };
 		90F8F5061B6830FD00541B06 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +110,12 @@
 		907008B11B582F8800C7B740 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		907008B51B5835A100C7B740 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		907008B71B58467500C7B740 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
+		907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
+		909EB8C21B78C403006661FC /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		909EB8C81B78F30B006661FC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		909EB8CE1B79F072006661FC /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		909EB8D01B79F970006661FC /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_hook_blue.png; sourceTree = "<group>"; };
 		90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +168,11 @@
 				90F8F5091B6ABBE200541B06 /* messages */,
 				9048D3401B51722600F88FE3 /* AppDelegate.swift */,
 				904926481B663AF80041BB54 /* LoginViewController.swift */,
+				909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */,
+				907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */,
+				909EB8D01B79F970006661FC /* ConfigViewController.swift */,
 				9048D3441B51722600F88FE3 /* Main.storyboard */,
+				909EB8C81B78F30B006661FC /* ProfileViewController.swift */,
 				9048D3491B51722600F88FE3 /* LaunchScreen.xib */,
 				9048D3731B5178A400F88FE3 /* MainViewController.swift */,
 				9048D3751B517A5F00F88FE3 /* CellData.swift */,
@@ -201,12 +217,14 @@
 		9048D3601B5172CB00F88FE3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				909EB8C21B78C403006661FC /* edit.png */,
 				9048D3971B53E3E200F88FE3 /* empty_heart_icon.png */,
 				9048D3981B53E3E200F88FE3 /* full_heart_icon.png */,
 				9048D37B1B5192B600F88FE3 /* chat.png */,
 				9048D37C1B5192B600F88FE3 /* hook.png */,
 				907008A71B5829F500C7B740 /* profile_hook.png */,
 				9048D3911B52F31200F88FE3 /* menu.png */,
+				909EB8CE1B79F072006661FC /* photo.png */,
 				907008AB1B582A0200C7B740 /* profile_cog.png */,
 				907008A91B5829FC00C7B740 /* profile_chat.png */,
 				907008AF1B582DFB00C7B740 /* michal.jpg */,
@@ -227,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				907008B11B582F8800C7B740 /* MenuViewController.swift */,
-				9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */,
 				9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */,
+				9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */,
 				9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */,
 			);
 			name = menu;
@@ -343,12 +361,14 @@
 				9048D36B1B5172DE00F88FE3 /* coquine3.jpg in Resources */,
 				9048D39A1B53E3E200F88FE3 /* full_heart_icon.png in Resources */,
 				9048D3461B51722600F88FE3 /* Main.storyboard in Resources */,
+				909EB8CF1B79F072006661FC /* photo.png in Resources */,
 				9048D3701B5172DE00F88FE3 /* loginWallpaper.jpeg in Resources */,
 				9048D36D1B5172DE00F88FE3 /* coquine5.jpg in Resources */,
 				907008B01B582DFB00C7B740 /* michal.jpg in Resources */,
 				9048D36E1B5172DE00F88FE3 /* coquine6.jpg in Resources */,
 				9048D34B1B51722600F88FE3 /* LaunchScreen.xib in Resources */,
 				9048D3991B53E3E200F88FE3 /* empty_heart_icon.png in Resources */,
+				909EB8C31B78C403006661FC /* edit.png in Resources */,
 				9049263B1B653ACC0041BB54 /* icone_smal.png in Resources */,
 				9048D3481B51722600F88FE3 /* Images.xcassets in Resources */,
 				9048D37E1B5192B600F88FE3 /* hook.png in Resources */,
@@ -378,10 +398,14 @@
 				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
 				907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */,
 				9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */,
+				909EB8C91B78F30B006661FC /* ProfileViewController.swift in Sources */,
+				909EB8CB1B79EEF3006661FC /* EditProfileViewController.swift in Sources */,
+				909EB8D11B79F970006661FC /* ConfigViewController.swift in Sources */,
 				907008A21B56FC9000C7B740 /* PhotoViewController.swift in Sources */,
 				9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */,
 				9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */,
 				906A06F51B788F7600F559D7 /* userFacebook.swift in Sources */,
+				907147231B7A47D100F19C48 /* ProfileNavigationViewController.swift in Sources */,
 				9048D3851B52DE7D00F88FE3 /* SWRevealViewController.m in Sources */,
 				907008A41B5701F100C7B740 /* PhotoViewCell.swift in Sources */,
 				904926491B663AF80041BB54 /* LoginViewController.swift in Sources */,

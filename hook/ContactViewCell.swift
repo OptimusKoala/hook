@@ -11,6 +11,9 @@ import UIKit
 class ContactViewCell: UITableViewCell {
 
     @IBOutlet weak var contactName: UILabel!
+    @IBOutlet weak var connectedLabel: UILabel!
+    @IBOutlet weak var contactImage: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

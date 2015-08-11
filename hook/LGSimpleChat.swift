@@ -247,11 +247,29 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: Life Cycle
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.setup()
+        
+        // This code is used to display the menu button instead of the "< back" from messages
+        // only if the previous VC is the menu. 
+        let numberOfPreviousVC : Int! = self.navigationController?.viewControllers?.count
+        if (numberOfPreviousVC == 1)
+        {
+            let image = UIImage(named: "menu.png")
+            let menubutton : UIBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "")
+            
+            if self.revealViewController() != nil {
+                menubutton.target = self.revealViewController()
+                menubutton.action = "revealToggle:"
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            }
+            
+            self.navigationItem.setLeftBarButtonItem(menubutton, animated: true)
+        }
+        
          // -------------------------
         /*let width = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 12)
         let height = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 20)

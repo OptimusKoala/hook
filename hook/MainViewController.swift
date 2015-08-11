@@ -9,7 +9,9 @@
 import UIKit
 
 class MainViewController: UITableViewController {
-
+    // Index for profile
+    var cellIndex : Int!
+    
     // list of data for cells
     var dataList = [cellData]()
     // my objects cells
@@ -80,7 +82,7 @@ class MainViewController: UITableViewController {
         let (data) = dataList[indexPath.row]
         let image = UIImage(named: data.image)
         // Configure the cell...
-        cell.imageCell.image = image
+        cell.imageCell.setBackgroundImage(image, forState: UIControlState.Normal)
         cell.nameCell.text = data.name
         cell.descCell.text = data.description
         cell.ageCell.text = String(data.age) + " ans"
@@ -89,12 +91,28 @@ class MainViewController: UITableViewController {
             cell.connectCell.backgroundColor = UIColor.greenColor()
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.imageCell.tag = indexPath.row
         return cell
     }
     
-    
     @IBAction func hookButton(sender: UIButton) {
         sender.setImage(fullHeart, forState:UIControlState.Normal)
+    }
+    
+    
+    @IBAction func imageClick(sender: UIButton) {
+        cellIndex = sender.tag
+        performSegueWithIdentifier("goToProfile", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToProfile"
+        {
+            let cell : cellData = dataList[cellIndex]
+            
+            let nav = segue.destinationViewController as! ProfileViewController
+            nav.profile = cell
+        }
     }
     
     /*

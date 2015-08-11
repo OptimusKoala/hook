@@ -12,7 +12,7 @@ class CellViewController: UITableViewCell {
 
     @IBOutlet weak var nameCell: UILabel!
     @IBOutlet weak var descCell: UILabel!
-    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var imageCell: UIButton!
     @IBOutlet weak var ageCell: UILabel!
     @IBOutlet weak var connectCell: UILabel!
     

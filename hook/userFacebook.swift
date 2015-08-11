@@ -12,13 +12,13 @@ class userFacebook {
     // parameters
     var userName : String = "error" {
         didSet {
-            println(userName)
+            println()
         }
     }
     
     var userMail : String = "error" {
         didSet {
-            println(userMail)
+            println()
         }
     }
     

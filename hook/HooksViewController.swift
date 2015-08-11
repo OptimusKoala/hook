@@ -10,6 +10,8 @@ import UIKit
 
 class HooksViewController: UITableViewController {
     
+    // index to pass data to profileView
+    var cellIndex : Int!
     // list of data for cells
     var hooksList = [cellData]()
     // my objects cells
@@ -66,12 +68,31 @@ class HooksViewController: UITableViewController {
         let (data) = hooksList[indexPath.row]
         let image = UIImage(named: data.image)
         // Configure the cell...
-        cell.imageCell.image = image
+        cell.imageCell.setBackgroundImage(image, forState: UIControlState.Normal)
         cell.nameCell.text = data.name
         cell.ageCell.text = String(data.age) + " ans"
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.imageCell.tag = indexPath.row
         return cell
     }
+    
+    // Event when click on image
+    @IBAction func clickImage(sender: UIButton) {
+        cellIndex = sender.tag
+        performSegueWithIdentifier("goToProfileFromHook", sender: self)
+    }
+    
+    // Pass data to next view controller through
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToProfileFromHook"
+        {
+            let cell : cellData = hooksList[cellIndex]
+            
+            let nav = segue.destinationViewController as! ProfileViewController
+            nav.profile = cell
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

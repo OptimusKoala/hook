@@ -11,7 +11,7 @@ import UIKit
 class YourHooksViewController: UITableViewCell {
 
     // -------------------------------
-    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var imageCell: UIButton!
     @IBOutlet weak var nameCell: UILabel!
     @IBOutlet weak var ageCell: UILabel!
     // -------------------------------
