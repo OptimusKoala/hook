@@ -24,7 +24,6 @@
 		9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3791B517C9100F88FE3 /* CellViewController.swift */; };
 		9048D37D1B5192B600F88FE3 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37B1B5192B600F88FE3 /* chat.png */; };
 		9048D37E1B5192B600F88FE3 /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37C1B5192B600F88FE3 /* hook.png */; };
-		9048D3851B52DE7D00F88FE3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */; };
 		9048D3921B52F31200F88FE3 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3911B52F31200F88FE3 /* menu.png */; };
 		9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3931B532A2700F88FE3 /* HooksViewController.swift */; };
 		9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */; };
@@ -46,6 +45,7 @@
 		907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B51B5835A100C7B740 /* MenuViewCell.swift */; };
 		907008B81B58467500C7B740 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907008B71B58467500C7B740 /* ContactViewCell.swift */; };
 		907147231B7A47D100F19C48 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */; };
+		907147261B7B937C00F19C48 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907147251B7B937C00F19C48 /* SWRevealViewController.m */; };
 		909EB8C31B78C403006661FC /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EB8C21B78C403006661FC /* edit.png */; };
 		909EB8C91B78F30B006661FC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8C81B78F30B006661FC /* ProfileViewController.swift */; };
 		909EB8CB1B79EEF3006661FC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */; };
@@ -88,8 +88,6 @@
 		9048D37B1B5192B600F88FE3 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		9048D37C1B5192B600F88FE3 /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook.png; sourceTree = "<group>"; };
 		9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hook-Bridging-Header.h"; sourceTree = "<group>"; };
-		9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		9048D3911B52F31200F88FE3 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		9048D3931B532A2700F88FE3 /* HooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HooksViewController.swift; sourceTree = "<group>"; };
 		9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourHooksViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +109,8 @@
 		907008B51B5835A100C7B740 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		907008B71B58467500C7B740 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
+		907147241B7B937C00F19C48 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		907147251B7B937C00F19C48 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		909EB8C21B78C403006661FC /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		909EB8C81B78F30B006661FC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -245,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				907008B11B582F8800C7B740 /* MenuViewController.swift */,
-				9048D3841B52DE7D00F88FE3 /* SWRevealViewController.m */,
-				9048D3831B52DE7D00F88FE3 /* SWRevealViewController.h */,
+				907147241B7B937C00F19C48 /* SWRevealViewController.h */,
+				907147251B7B937C00F19C48 /* SWRevealViewController.m */,
 				9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */,
 			);
 			name = menu;
@@ -393,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9048D3411B51722600F88FE3 /* AppDelegate.swift in Sources */,
+				907147261B7B937C00F19C48 /* SWRevealViewController.m in Sources */,
 				9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */,
 				9048D3761B517A5F00F88FE3 /* CellData.swift in Sources */,
 				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
@@ -406,7 +407,6 @@
 				9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */,
 				906A06F51B788F7600F559D7 /* userFacebook.swift in Sources */,
 				907147231B7A47D100F19C48 /* ProfileNavigationViewController.swift in Sources */,
-				9048D3851B52DE7D00F88FE3 /* SWRevealViewController.m in Sources */,
 				907008A41B5701F100C7B740 /* PhotoViewCell.swift in Sources */,
 				904926491B663AF80041BB54 /* LoginViewController.swift in Sources */,
 				90F8F5061B6830FD00541B06 /* LGSimpleChat.swift in Sources */,
