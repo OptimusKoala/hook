@@ -31,7 +31,9 @@ class MenuViewController: UITableViewController {
         myData = cellData(myName: userFb.getUserName(), myDescription: "Bouffeur de cul!", myImage: "michal.jpg", myAge: "22", isConnect: true)
         
         // resize contact tableview to enable scroll
-        contactTableView.frame = CGRectMake(0, 0, 0, 250)
+        let screenSize : CGRect = UIScreen.mainScreen().bounds
+        let screenHeight = screenSize.height - 230
+        contactTableView.frame = CGRectMake(0, 0, 0, screenHeight)
         
         // Add the delegate and datasource for contact TableView
         userTableView.delegate = self
