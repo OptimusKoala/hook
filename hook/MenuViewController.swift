@@ -70,6 +70,17 @@ class MenuViewController: UITableViewController {
             return 1
         }
     }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (tableView==self.userTableView)
+        {
+            return ""
+        }
+        else
+        {
+            return "Contacts"
+        }
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.

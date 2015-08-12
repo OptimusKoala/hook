@@ -30,6 +30,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             println("Already Logged")
             performSegueWithIdentifier("Login", sender: self)
         }
+        
+        // Hide navigation bar when log out
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // Facebook Delegate Methods

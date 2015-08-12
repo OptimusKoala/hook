@@ -22,6 +22,12 @@ class userFacebook {
         }
     }
     
+    var userFullName : String = "error" {
+        didSet {
+            println()
+        }
+    }
+    
     // ------------------------
     // Constructor
     
@@ -44,6 +50,7 @@ class userFacebook {
             }
             else
             {
+                self.userFullName = result["name"] as! String
                 self.userName = result["first_name"] as! String
                 self.userMail = result["email"] as! String
                 
@@ -62,6 +69,12 @@ class userFacebook {
     {
         return self.userMail
     }
+    // ----------
+    func getUserFullName() -> String
+    {
+        return self.userFullName
+    }
 
+    
     // ----------
 }
