@@ -181,8 +181,6 @@
 				9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */,
 				907008A11B56FC9000C7B740 /* PhotoViewController.swift */,
 				907008A31B5701F100C7B740 /* PhotoViewCell.swift */,
-				907008B51B5835A100C7B740 /* MenuViewCell.swift */,
-				907008B71B58467500C7B740 /* ContactViewCell.swift */,
 				9048D3471B51722600F88FE3 /* Images.xcassets */,
 				9048D33E1B51722600F88FE3 /* Supporting Files */,
 			);
@@ -245,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				907008B11B582F8800C7B740 /* MenuViewController.swift */,
+				907008B51B5835A100C7B740 /* MenuViewCell.swift */,
+				907008B71B58467500C7B740 /* ContactViewCell.swift */,
 				907147241B7B937C00F19C48 /* SWRevealViewController.h */,
 				907147251B7B937C00F19C48 /* SWRevealViewController.m */,
 				9048D3821B52DE7D00F88FE3 /* hook-Bridging-Header.h */,

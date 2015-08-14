@@ -10,13 +10,16 @@ import UIKit
 
 let reuseIdentifier = "photosCell"
 
-class PhotoViewController: UICollectionViewController {
+class PhotoViewController: UICollectionViewController, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var myImage = UIImage(named: "coquine6.jpg")
+    var menuIsOn : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Enable swrevalviewcontroller delegate method
+        self.revealViewController().delegate = self
         
         // Background for collection view
         self.collectionView?.backgroundColor = UIColor.whiteColor()
@@ -34,6 +37,7 @@ class PhotoViewController: UICollectionViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
     }
 
@@ -70,6 +74,30 @@ class PhotoViewController: UICollectionViewController {
         cell.imageView.image = myImage
         return cell
     }
+    
+    // -------------------------------------------
+    // Delegate method of SWRevealViewController
+    // Used to disable scroll and useractivity in views
+    func revealController(revealController: SWRevealViewController!,  willMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.collectionView!.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.collectionView!.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    // ---
+    func revealController(revealController: SWRevealViewController!,  didMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.collectionView!.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.collectionView!.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    // -------------------------------------------
 
     // MARK: UICollectionViewDelegate
 

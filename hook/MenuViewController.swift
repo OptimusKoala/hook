@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UITableViewController {
+class MenuViewController: UITableViewController, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var contactTableView: UITableView!
@@ -166,7 +166,7 @@ class MenuViewController: UITableViewController {
         cellIndex = sender.tag
         performSegueWithIdentifier("goToProfileFromMenu", sender: self)
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

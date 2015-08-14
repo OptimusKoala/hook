@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITableViewController {
+class MainViewController: UITableViewController, SWRevealViewControllerDelegate {
     // Index for profile
     var cellIndex : Int!
     
@@ -29,10 +29,13 @@ class MainViewController: UITableViewController {
     // ------------------------------------
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var menuIsOn : Bool = false
     
     // -------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Enable swrevalviewcontroller delegate method
+        self.revealViewController().delegate = self
         
         // Insert data in my array
         dataList.insert(myData, atIndex: 0)
@@ -49,6 +52,7 @@ class MainViewController: UITableViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -101,8 +105,16 @@ class MainViewController: UITableViewController {
     
     
     @IBAction func imageClick(sender: UIButton) {
-        cellIndex = sender.tag
-        performSegueWithIdentifier("goToProfile", sender: self)
+        // This code disable click action if menu is on
+        if (menuIsOn == false)
+        {
+            cellIndex = sender.tag
+            performSegueWithIdentifier("goToProfile", sender: self)
+        }
+        else
+        {
+            // Do a tag gesture to reload mainview
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -114,6 +126,30 @@ class MainViewController: UITableViewController {
             nav.profile = cell
         }
     }
+    
+    // -------------------------------------------
+    // Delegate method of SWRevealViewController
+    // Used to disable scroll and useractivity in views
+    func revealController(revealController: SWRevealViewController!,  willMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.tableView.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.tableView.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    // ---
+    func revealController(revealController: SWRevealViewController!,  didMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.tableView.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.tableView.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    // -------------------------------------------
     
     /*
     // Override to support conditional editing of the table view.

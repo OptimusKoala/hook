@@ -558,7 +558,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <segue destination="X4o-n8-0F3" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="0Bk-jR-HKS"/>
+                                                <segue destination="X4o-n8-0F3" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="0Bk-jR-HKS"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjA-hx-GQi">
@@ -1843,10 +1843,10 @@
         <image name="profile_hook.png" width="63" height="59"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4ru-C9-XdF"/>
+        <segue reference="sny-0W-Ors"/>
+        <segue reference="izn-3a-xhm"/>
         <segue reference="0Bk-jR-HKS"/>
         <segue reference="8s1-lX-4D4"/>
         <segue reference="VOQ-gk-Oqk"/>
-        <segue reference="izn-3a-xhm"/>
     </inferredMetricsTieBreakers>
 </document>

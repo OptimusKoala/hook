@@ -39,6 +39,7 @@ class ProfileViewController: UIViewController {
                 menubutton.target = self.revealViewController()
                 menubutton.action = "revealToggle:"
                 self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             }
             
             self.navigationItem.setLeftBarButtonItem(menubutton, animated: true)

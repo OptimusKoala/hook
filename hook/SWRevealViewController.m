@@ -634,7 +634,7 @@ const int FrontViewPositionNone = 0xff;
         [self _initDefaultProperties];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceRearController withViewController:rearViewController animated:NO];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceFrontController withViewController:frontViewController animated:NO];
-    }
+        }
     return self;
 }
 

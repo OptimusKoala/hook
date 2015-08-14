@@ -8,17 +8,21 @@
 
 import UIKit
 
-class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate {
+class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var nameFB: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var fbButton: FBSDKLoginButton!
+    // --------------------
+    var menuIsOn : Bool = false
     
     // Create fbUser object
     let userFb : userFacebook = userFacebook()
     // --------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Enable swrevalviewcontroller delegate method
+        self.revealViewController().delegate = self
         
         nameFB.text = userFb.getUserFullName()
         // Do any additional setup after loading the view.
@@ -30,6 +34,7 @@ class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
     }
@@ -53,6 +58,29 @@ class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // -------------------------------------------
+    // Delegate method of SWRevealViewController
+    // Used to disable scroll and useractivity in views
+    func revealController(revealController: SWRevealViewController!,  willMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            menuIsOn = false
+        } else {
+            menuIsOn = true
+            fbButton.userInteractionEnabled = false
+        }
+    }
+    // ---
+    func revealController(revealController: SWRevealViewController!,  didMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            menuIsOn = false
+        } else {
+            menuIsOn = true
+            fbButton.userInteractionEnabled = false
+        }
+    }
+    // -------------------------------------------
+    
 
     /*
     // MARK: - Navigation
