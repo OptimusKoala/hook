@@ -21,14 +21,14 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     // user profil cells
     var myData : cellData!
     // contact user cells
-    var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
+    var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
+    var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init user data
-        myData = cellData(myName: userFb.getUserName(), myDescription: "Bouffeur de cul!", myImage: "michal.jpg", myAge: "22", isConnect: true)
+        myData = cellData(myName: userFb.getUserName(), myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImage: "michal.jpg", myAge: "22", isConnect: true)
         
         // resize contact tableview to enable scroll
         let screenSize : CGRect = UIScreen.mainScreen().bounds
@@ -113,6 +113,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             cellUser.userName.text = myData.name
             cellUser.userDesc.text = myData.description
             cellUser.userAge.text = myData.age + " ans"
+            cellUser.userType.text = myData.type
             return cellUser
         }
         else

@@ -15,13 +15,13 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     // list of data for cells
     var dataList = [cellData]()
     // my objects cells
-    var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
-    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myImage: "coquine4.jpg", myAge: "23", isConnect: true)
-    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myImage: "coquine5.jpg", myAge: "20", isConnect: true)
-    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myImage: "coquine6.jpg", myAge: "19", isConnect: false)
-    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myImage: "coquine2.jpg", myAge: "23", isConnect: false)
+    var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
+    var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
+    var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myType: "Sportif", myImage: "coquine4.jpg", myAge: "23", isConnect: true)
+    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myType: "Sportif", myImage: "coquine5.jpg", myAge: "20", isConnect: true)
+    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myType: "Sportif", myImage: "coquine6.jpg", myAge: "19", isConnect: false)
+    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myType: "Sportif", myImage: "coquine2.jpg", myAge: "23", isConnect: false)
     
     // hook images
     let fullHeart = UIImage(named: "full_heart_icon")

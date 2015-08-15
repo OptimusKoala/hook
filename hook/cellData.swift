@@ -12,6 +12,7 @@ class cellData  {
     // parameters
     let name : String
     let description : String
+    let type : String
     let image : String
     let age : String
     let connect : Bool
@@ -19,9 +20,10 @@ class cellData  {
     // ------------------------
     // Constructor
     
-    init(myName : String, myDescription : String, myImage : String, myAge : String, isConnect : Bool){
+    init(myName : String, myDescription : String, myType : String, myImage : String, myAge : String, isConnect : Bool){
         self.name = myName
         self.description = myDescription
+        self.type = myType
         self.image = myImage
         self.age = myAge
         self.connect = isConnect

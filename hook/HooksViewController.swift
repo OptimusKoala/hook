@@ -15,9 +15,9 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     // list of data for cells
     var hooksList = [cellData]()
     // my objects cells
-    var myHook = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var myHook2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var myHook3 = cellData(myName: "Lussa", myDescription: "Yolo", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var myHook = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
+    var myHook2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
+    var myHook3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
     // ------------------------------------
     var menuIsOn : Bool = false
 
