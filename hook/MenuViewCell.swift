@@ -15,6 +15,9 @@ class MenuViewCell: UITableViewCell {
     @IBOutlet weak var userAge: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userType: UILabel!
+    @IBOutlet weak var nbHookLabel: UILabel!
+    @IBOutlet weak var nbHook: UILabel!
+    @IBOutlet weak var hookImage: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

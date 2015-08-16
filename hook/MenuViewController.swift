@@ -12,6 +12,10 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
 
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var contactTableView: UITableView!
+    
+    // ------------------------------------------------
+    // Bool for extend cell
+    var expand : Bool = false
     // index to pass data to profileView
     var cellIndex : Int!
     // list of data for cells
@@ -24,6 +28,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
     var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
     var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +94,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         // Return the number of rows in the section.
         if (tableView==self.userTableView)
         {
-            return 1
+            return 2
         }
         else
         {
@@ -102,19 +107,34 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         
         if (tableView==self.userTableView)
         {
-            let cellUser = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! MenuViewCell
-            // Configure the cell...
-            cellUser.userImage.layer.masksToBounds = false
-            cellUser.userImage.layer.borderWidth = 3.0
-            cellUser.userImage.layer.borderColor = UIColor.whiteColor().CGColor
-            cellUser.userImage.layer.cornerRadius = cellUser.userImage.frame.height/2.6
-            cellUser.userImage.clipsToBounds = true
-            cellUser.userImage.image = UIImage(named: "michal.jpg")
-            cellUser.userName.text = myData.name
-            cellUser.userDesc.text = myData.description
-            cellUser.userAge.text = myData.age + " ans"
-            cellUser.userType.text = myData.type
-            return cellUser
+            if (indexPath.row == 0) {
+                let cellUser = tableView.dequeueReusableCellWithIdentifier("menuCellUser", forIndexPath: indexPath) as! MenuViewCell
+                // Configure the cell...
+                cellUser.userImage.layer.masksToBounds = false
+                cellUser.userImage.layer.borderWidth = 3.0
+                cellUser.userImage.layer.borderColor = UIColor.whiteColor().CGColor
+                cellUser.userImage.layer.cornerRadius = cellUser.userImage.frame.height/2.6
+                cellUser.userImage.clipsToBounds = true
+                cellUser.userImage.image = UIImage(named: "michal.jpg")
+                cellUser.userName.text = myData.name
+                cellUser.userDesc.text = myData.description
+                cellUser.userAge.text = myData.age + " ans"
+                cellUser.userType.text = myData.type
+                cellUser.backgroundColor = UIColor(patternImage: UIImage(named: "fond.png")!)
+                cellUser.userName.hidden = true
+                cellUser.userAge.hidden = true
+                cellUser.userDesc.hidden = true
+                cellUser.userType.hidden = true
+                cellUser.nbHook.hidden = true
+                cellUser.hookImage.hidden = true
+                cellUser.nbHookLabel.hidden = true
+                return cellUser
+            }
+            else {
+                let cellMenu = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! UITableViewCell
+                cellMenu.backgroundColor = UIColor(patternImage: UIImage(named: "fond_cell.png")!)
+                return cellMenu
+            }
         }
         else
         {
@@ -166,6 +186,61 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     @IBAction func clickButton(sender: UIButton) {
         cellIndex = sender.tag
         performSegueWithIdentifier("goToProfileFromMenu", sender: self)
+    }
+    
+    // function to update menu cell height
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (tableView==self.userTableView)
+        {
+            if (self.expand == false)
+            {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuViewCell
+                cell.userName.hidden = false
+                cell.userAge.hidden = false
+                cell.userDesc.hidden = false
+                cell.userType.hidden = false
+                cell.nbHook.hidden = false
+                cell.hookImage.hidden = false
+                cell.nbHookLabel.hidden = false
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
+            else
+            {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuViewCell
+                cell.userName.hidden = true
+                cell.userAge.hidden = true
+                cell.userDesc.hidden = true
+                cell.userType.hidden = true
+                cell.nbHook.hidden = true
+                cell.hookImage.hidden = true
+                cell.nbHookLabel.hidden = true
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
+        }
+    }
+    
+    // Function to resize menu cell
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+            if (tableView==self.userTableView)
+            {
+                if (indexPath.row == 0)
+                {
+                    if (self.expand == false)
+                    {
+                        self.expand = true
+                        return 225
+                    }
+                    else
+                    {
+                        self.expand = false
+                        return 110
+                    }
+                }
+                return 70
+            }
+        return 50
     }
     
     /*
