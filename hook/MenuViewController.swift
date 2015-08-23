@@ -125,7 +125,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cellUser.userDesc.text = myData.description
                 cellUser.userAge.text = myData.age + " ans"
                 cellUser.userType.text = myData.type
-                cellUser.backgroundColor = UIColor(patternImage: UIImage(named: "fond.png")!)
+                cellUser.backgroundColor = UIColor(patternImage: UIImage(named: "fond2.png")!)
                 cellUser.userName.hidden = true
                 cellUser.userAge.hidden = true
                 cellUser.userDesc.hidden = true

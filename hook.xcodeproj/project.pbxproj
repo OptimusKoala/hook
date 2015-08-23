@@ -56,6 +56,7 @@
 		909EB8CF1B79F072006661FC /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EB8CE1B79F072006661FC /* photo.png */; };
 		909EB8D11B79F970006661FC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8D01B79F970006661FC /* ConfigViewController.swift */; };
 		90A324AF1B5BBD3700299E57 /* icone_hook_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */; };
+		90BD9BB31B89E25A00028B26 /* fond2.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BD9BB21B89E25A00028B26 /* fond2.png */; };
 		90F8F5061B6830FD00541B06 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		909EB8CE1B79F072006661FC /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		909EB8D01B79F970006661FC /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_hook_blue.png; sourceTree = "<group>"; };
+		90BD9BB21B89E25A00028B26 /* fond2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fond2.png; sourceTree = "<group>"; };
 		90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +225,7 @@
 		9048D3601B5172CB00F88FE3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				90BD9BB21B89E25A00028B26 /* fond2.png */,
 				9076FC9A1B80F9F400000399 /* down.png */,
 				9076FC9B1B80F9F400000399 /* up.png */,
 				9076FC961B7FA4C100000399 /* fond.png */,
@@ -385,6 +388,7 @@
 				9048D3991B53E3E200F88FE3 /* empty_heart_icon.png in Resources */,
 				909EB8C31B78C403006661FC /* edit.png in Resources */,
 				9049263B1B653ACC0041BB54 /* icone_smal.png in Resources */,
+				90BD9BB31B89E25A00028B26 /* fond2.png in Resources */,
 				9048D3481B51722600F88FE3 /* Images.xcassets in Resources */,
 				9048D37E1B5192B600F88FE3 /* hook.png in Resources */,
 				9076FC991B80CB0000000399 /* fond_cell.png in Resources */,
