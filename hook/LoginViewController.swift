@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol sendDataLabel{
+    func sendVC(data:String)
+}
+
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var loading:UIActivityIndicatorView!
@@ -30,7 +34,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             println("Already Logged")
             performSegueWithIdentifier("Login", sender: self)
         }
-        
         // Hide navigation bar when log out
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -62,5 +65,4 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }

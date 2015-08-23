@@ -15,15 +15,18 @@ class MenuViewCell: UITableViewCell {
     @IBOutlet weak var userAge: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userType: UILabel!
+    // Design items
     @IBOutlet weak var nbHookLabel: UILabel!
     @IBOutlet weak var nbHook: UILabel!
-    @IBOutlet weak var hookImage: UIButton!
+    @IBOutlet weak var hookImage: UIImageView!
+    @IBOutlet weak var downUpImage: UIImageView!
+    @IBOutlet weak var editLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

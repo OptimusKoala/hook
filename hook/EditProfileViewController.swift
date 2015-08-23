@@ -40,20 +40,28 @@ class EditProfileViewController: UIViewController {
     
     // User clicked on "Cancel" button
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-        // Do nothing
-        performSegueWithIdentifier("EditProfile", sender: self)
+        // Do nothing but go back to menu view controller
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // User clicked on "Done" button
     @IBAction func doneAction(sender: UIBarButtonItem) {
         // Do SQL request to insert new data in profile
-        performSegueWithIdentifier("EditProfile", sender: self)
+        // Go back to menu view controller
+        navigationController?.popViewControllerAnimated(true)
     }
-    
     
     //Function to hide status bar
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // pass data for MainViewController
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "EditProfile")
+        {
+            let nav = segue.destinationViewController as! SWRevealViewController
+        }
     }
     /*
     // MARK: - Navigation

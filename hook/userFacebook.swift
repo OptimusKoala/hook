@@ -12,19 +12,19 @@ class userFacebook {
     // parameters
     var userName : String = "error" {
         didSet {
-            println()
+            println("fb username ok")
         }
     }
     
     var userMail : String = "error" {
         didSet {
-            println()
+            println("fb mail ok")
         }
     }
     
     var userFullName : String = "error" {
         didSet {
-            println()
+            println("fb full name ok")
         }
     }
     

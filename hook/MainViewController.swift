@@ -11,7 +11,8 @@ import UIKit
 class MainViewController: UITableViewController, SWRevealViewControllerDelegate {
     // Index for profile
     var cellIndex : Int!
-    
+    // Data from previousVC
+    var previousVC : String = "Login"
     // list of data for cells
     var dataList = [cellData]()
     // my objects cells
@@ -34,6 +35,9 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     // -------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        // delegate to login view
+        let loginVC : LoginViewController = LoginViewController()
+        
         // Enable swrevalviewcontroller delegate method
         self.revealViewController().delegate = self
         
@@ -55,11 +59,22 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
+        // if previous was Login, then launch menu
+        if (previousVC == "Login")
+        {
+            // navigation bar desapear
+            self.revealViewController().revealToggleAnimated(true)
+        }
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func sendVC(data: NSString) {
+        previousVC = data as String
     }
 
     override func didReceiveMemoryWarning() {

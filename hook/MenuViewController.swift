@@ -16,6 +16,8 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     // ------------------------------------------------
     // Bool for extend cell
     var expand : Bool = false
+    // check if user click or not
+    var clicked : Bool = false
     // index to pass data to profileView
     var cellIndex : Int!
     // list of data for cells
@@ -33,11 +35,11 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init user data
-        myData = cellData(myName: userFb.getUserName(), myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImage: "michal.jpg", myAge: "22", isConnect: true)
+        myData = cellData(myName: "Michal", myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImage: "michal.jpg", myAge: "22", isConnect: true)
         
         // resize contact tableview to enable scroll
         let screenSize : CGRect = UIScreen.mainScreen().bounds
-        let screenHeight = screenSize.height - 230
+        let screenHeight = screenSize.height - 130
         contactTableView.frame = CGRectMake(0, 0, 0, screenHeight)
         
         // Add the delegate and datasource for contact TableView
@@ -50,6 +52,9 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         contactList.insert(contact1, atIndex: 0)
         contactList.insert(contact2, atIndex: 1)
         contactList.insert(contact3, atIndex: 2)
+        
+        // Add bg color to view, used to hide white status bar
+        view.backgroundColor = uicolorFromHex(0x279df1)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -128,6 +133,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cellUser.nbHook.hidden = true
                 cellUser.hookImage.hidden = true
                 cellUser.nbHookLabel.hidden = true
+                cellUser.editLabel.hidden = true
                 return cellUser
             }
             else {
@@ -160,7 +166,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     
     //Function to hide status bar
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
     }
     
     // pass data to view controller EditProfile
@@ -168,18 +174,21 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         if segue.identifier == "editProfile"
         {
             let data : cellData = myData
-            
             let nav = segue.destinationViewController as! EditProfileViewController
             nav.data = data
         }
         if segue.identifier == "goToProfileFromMenu"
         {
             let cell : cellData = contactList[cellIndex]
-            
             let nav = segue.destinationViewController as! ProfileNavigationViewController
-            
             let navVC = nav.viewControllers.first as! ProfileViewController
             navVC.profile = cell
+        }
+        if segue.identifier == "MainViewSegue"
+        {
+            let nav = segue.destinationViewController as! UINavigationController
+            let navVC = nav.viewControllers.first as! MainViewController
+            navVC.previousVC = "Menu"
         }
     }
 
@@ -188,10 +197,19 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         performSegueWithIdentifier("goToProfileFromMenu", sender: self)
     }
     
+    @IBAction func clickProfileImage(sender: UITapGestureRecognizer) {
+        if (self.expand == true)
+        {
+            performSegueWithIdentifier("editProfile", sender: self)
+        }
+    }
+    
     // function to update menu cell height
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (tableView==self.userTableView)
+        // disable the click for the cell with menu items
+        if (tableView==self.userTableView) && (indexPath.row == 0)
         {
+            self.clicked = true
             if (self.expand == false)
             {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuViewCell
@@ -202,6 +220,10 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cell.nbHook.hidden = false
                 cell.hookImage.hidden = false
                 cell.nbHookLabel.hidden = false
+                cell.editLabel.hidden = false
+                cell.userImage.userInteractionEnabled = true
+                cell.downUpImage.image = UIImage(named: "up.png")
+                // ---------------------
                 tableView.beginUpdates()
                 tableView.endUpdates()
             }
@@ -215,6 +237,11 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cell.nbHook.hidden = true
                 cell.hookImage.hidden = true
                 cell.nbHookLabel.hidden = true
+                cell.editLabel.hidden = true
+                cell.userImage.userInteractionEnabled = false
+                cell.downUpImage.image = UIImage(named: "down.png")
+                
+                // ---------------------
                 tableView.beginUpdates()
                 tableView.endUpdates()
             }
@@ -227,9 +254,10 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             {
                 if (indexPath.row == 0)
                 {
-                    if (self.expand == false)
+                    if (self.expand == false && self.clicked == true)
                     {
                         self.expand = true
+                        self.clicked = false
                         return 225
                     }
                     else
@@ -241,6 +269,15 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 return 70
             }
         return 50
+    }
+    
+    // Function used to add color with hexa code
+    func uicolorFromHex(rgbValue:UInt32)->UIColor{
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
     
     /*
