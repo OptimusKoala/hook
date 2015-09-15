@@ -16,13 +16,13 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     // list of data for cells
     var dataList = [cellData]()
     // my objects cells
-    var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
-    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myType: "Sportif", myImage: "coquine4.jpg", myAge: "23", isConnect: true)
-    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myType: "Sportif", myImage: "coquine5.jpg", myAge: "20", isConnect: true)
-    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myType: "Sportif", myImage: "coquine6.jpg", myAge: "19", isConnect: false)
-    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myType: "Sportif", myImage: "coquine2.jpg", myAge: "23", isConnect: false)
+    var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg","coquine1.jpg"], myAge: "22", isConnect: true)
+    var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg","coquine2.jpg","coquine2.jpg"], myAge: "19", isConnect: true)
+    var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg","coquine3.jpg","coquine3.jpg"], myAge: "21", isConnect: false)
+    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myType: "Sportif", myImages: ["coquine4.jpg","coquine4.jpg","coquine4.jpg"], myAge: "23", isConnect: true)
+    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myType: "Sportif", myImages: ["coquine5.jpg","coquine5.jpg","coquine5.jpg"], myAge: "20", isConnect: true)
+    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myType: "Sportif", myImages: ["coquine6.jpg","coquine6.jpg","coquine6.jpg"], myAge: "19", isConnect: false)
+    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myType: "Sportif", myImages: ["coquine2.jpg","coquine6.jpg","coquine6.jpg"], myAge: "23", isConnect: false)
     
     // hook images
     let fullHeart = UIImage(named: "full_heart_icon")
@@ -99,7 +99,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! CellViewController
         let (data) = dataList[indexPath.row]
-        let image = UIImage(named: data.image)
+        let image = UIImage(named: data.images[0])
         // Configure the cell...
         cell.imageCell.setBackgroundImage(image, forState: UIControlState.Normal)
         cell.nameCell.text = data.name

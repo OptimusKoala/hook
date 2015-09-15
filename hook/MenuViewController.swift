@@ -27,15 +27,15 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     // user profil cells
     var myData : cellData!
     // contact user cells
-    var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg","coquine1.jpg"], myAge: "22", isConnect: true)
+    var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg","coquine2.jpg","coquine2.jpg"], myAge: "19", isConnect: true)
+    var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg","coquine3.jpg","coquine3.jpg"], myAge: "21", isConnect: false)
     // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init user data
-        myData = cellData(myName: "Michal", myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImage: "michal.jpg", myAge: "22", isConnect: true)
+        myData = cellData(myName: "Michal", myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImages: ["michal.jpg"], myAge: "22", isConnect: true)
         
         // resize contact tableview to enable scroll
         let screenSize : CGRect = UIScreen.mainScreen().bounds
@@ -146,7 +146,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         {
             let cellContact = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! ContactViewCell
             let (contact) = contactList[indexPath.row]
-            let image = UIImage(named: contact.image)
+            let image = UIImage(named: contact.images[0])
             var layer : CALayer? = cellContact.contactImage.layer
             layer!.cornerRadius = 22
             layer!.borderWidth = 1.3

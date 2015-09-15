@@ -15,9 +15,9 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     // list of data for cells
     var hooksList = [cellData]()
     // my objects cells
-    var myHook = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImage: "coquine1.jpg", myAge: "22", isConnect: true)
-    var myHook2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImage: "coquine2.jpg", myAge: "19", isConnect: true)
-    var myHook3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImage: "coquine3.jpg", myAge: "21", isConnect: false)
+    var myHook = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg"], myAge: "22", isConnect: true)
+    var myHook2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg"], myAge: "19", isConnect: true)
+    var myHook3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg"], myAge: "21", isConnect: false)
     // ------------------------------------
     var menuIsOn : Bool = false
 
@@ -70,7 +70,7 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("yourHooks", forIndexPath: indexPath) as! YourHooksViewController
         let (data) = hooksList[indexPath.row]
-        let image = UIImage(named: data.image)
+        let image = UIImage(named: data.images[0])
         // Configure the cell...
         cell.imageCell.setBackgroundImage(image, forState: UIControlState.Normal)
         cell.nameCell.text = data.name

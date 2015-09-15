@@ -22,7 +22,7 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: data.image)
+        let image = UIImage(named: data.images[0])
         profileImage.image = image
         profileName.text = data.name
         profileAge.text = data.age

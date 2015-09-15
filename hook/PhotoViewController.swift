@@ -8,7 +8,7 @@
 
 import UIKit
 
-let reuseIdentifier = "photosCell"
+let reuseIdentifier2 = "photosCell"
 
 class PhotoViewController: UICollectionViewController, SWRevealViewControllerDelegate {
 
@@ -70,7 +70,7 @@ class PhotoViewController: UICollectionViewController, SWRevealViewControllerDel
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! PhotoViewCell
         cell.imageView.image = myImage
         return cell
     }

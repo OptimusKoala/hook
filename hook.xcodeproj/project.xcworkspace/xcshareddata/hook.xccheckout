@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4AC4B976-8EF3-4C60-BAE4-77A5D69115B3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>hook</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A9474D1C2B84B12FE21E06315F9C320621198590</key>
 		<string>https://github.com/MichaelCosmo/hook.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>hook.xcodeproj/project.xcworkspace</string>
+	<string>hook.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A9474D1C2B84B12FE21E06315F9C320621198590</key>

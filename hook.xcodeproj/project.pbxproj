@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,6 +50,8 @@
 		9076FC991B80CB0000000399 /* fond_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 9076FC981B80CB0000000399 /* fond_cell.png */; };
 		9076FC9C1B80F9F400000399 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 9076FC9A1B80F9F400000399 /* down.png */; };
 		9076FC9D1B80F9F400000399 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9076FC9B1B80F9F400000399 /* up.png */; };
+		90857CF51B95E48A00A26FAD /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90857CF41B95E48A00A26FAD /* ProfileViewCell.swift */; };
+		909237E61B97302E00867FF2 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909237E51B97302E00867FF2 /* ContentViewController.swift */; };
 		909EB8C31B78C403006661FC /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EB8C21B78C403006661FC /* edit.png */; };
 		909EB8C91B78F30B006661FC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8C81B78F30B006661FC /* ProfileViewController.swift */; };
 		909EB8CB1B79EEF3006661FC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */; };
@@ -69,6 +71,19 @@
 			remoteInfo = hook;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		90BD9BE91B95AD7500028B26 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9048D33B1B51722600F88FE3 /* hook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +135,8 @@
 		9076FC981B80CB0000000399 /* fond_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fond_cell.png; sourceTree = "<group>"; };
 		9076FC9A1B80F9F400000399 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		9076FC9B1B80F9F400000399 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		90857CF41B95E48A00A26FAD /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		909237E51B97302E00867FF2 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		909EB8C21B78C403006661FC /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		909EB8C81B78F30B006661FC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -176,21 +193,14 @@
 				9048D3811B52DDEC00F88FE3 /* menu */,
 				9048D3601B5172CB00F88FE3 /* images */,
 				90F8F5091B6ABBE200541B06 /* messages */,
+				90857CF81B95EAF100A26FAD /* profile */,
+				909237E11B96F09200867FF2 /* photo */,
+				909237E21B96F0A500867FF2 /* login */,
+				909237E41B96F0BE00867FF2 /* Hooks */,
+				909237E31B96F0B500867FF2 /* config */,
+				90857CF91B95EB1B00A26FAD /* design */,
 				9048D3401B51722600F88FE3 /* AppDelegate.swift */,
-				904926481B663AF80041BB54 /* LoginViewController.swift */,
-				909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */,
-				907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */,
-				909EB8D01B79F970006661FC /* ConfigViewController.swift */,
-				9048D3441B51722600F88FE3 /* Main.storyboard */,
-				909EB8C81B78F30B006661FC /* ProfileViewController.swift */,
-				9048D3491B51722600F88FE3 /* LaunchScreen.xib */,
 				9048D3731B5178A400F88FE3 /* MainViewController.swift */,
-				9048D3751B517A5F00F88FE3 /* CellData.swift */,
-				9048D3791B517C9100F88FE3 /* CellViewController.swift */,
-				9048D3931B532A2700F88FE3 /* HooksViewController.swift */,
-				9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */,
-				907008A11B56FC9000C7B740 /* PhotoViewController.swift */,
-				907008A31B5701F100C7B740 /* PhotoViewCell.swift */,
 				9048D3471B51722600F88FE3 /* Images.xcassets */,
 				9048D33E1B51722600F88FE3 /* Supporting Files */,
 			);
@@ -278,6 +288,63 @@
 			name = facebook;
 			sourceTree = "<group>";
 		};
+		90857CF81B95EAF100A26FAD /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				909EB8CA1B79EEF3006661FC /* EditProfileViewController.swift */,
+				907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */,
+				909EB8C81B78F30B006661FC /* ProfileViewController.swift */,
+				909237E51B97302E00867FF2 /* ContentViewController.swift */,
+				9048D3791B517C9100F88FE3 /* CellViewController.swift */,
+				9048D3751B517A5F00F88FE3 /* CellData.swift */,
+				90857CF41B95E48A00A26FAD /* ProfileViewCell.swift */,
+			);
+			name = profile;
+			sourceTree = "<group>";
+		};
+		90857CF91B95EB1B00A26FAD /* design */ = {
+			isa = PBXGroup;
+			children = (
+				9048D3491B51722600F88FE3 /* LaunchScreen.xib */,
+				9048D3441B51722600F88FE3 /* Main.storyboard */,
+			);
+			name = design;
+			sourceTree = "<group>";
+		};
+		909237E11B96F09200867FF2 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				907008A11B56FC9000C7B740 /* PhotoViewController.swift */,
+				907008A31B5701F100C7B740 /* PhotoViewCell.swift */,
+			);
+			name = photo;
+			sourceTree = "<group>";
+		};
+		909237E21B96F0A500867FF2 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				904926481B663AF80041BB54 /* LoginViewController.swift */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		909237E31B96F0B500867FF2 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				909EB8D01B79F970006661FC /* ConfigViewController.swift */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
+		909237E41B96F0BE00867FF2 /* Hooks */ = {
+			isa = PBXGroup;
+			children = (
+				9048D3951B53DB5F00F88FE3 /* YourHooksViewController.swift */,
+				9048D3931B532A2700F88FE3 /* HooksViewController.swift */,
+			);
+			name = Hooks;
+			sourceTree = "<group>";
+		};
 		90F8F5091B6ABBE200541B06 /* messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +363,7 @@
 				9048D3371B51722600F88FE3 /* Sources */,
 				9048D3381B51722600F88FE3 /* Frameworks */,
 				9048D3391B51722600F88FE3 /* Resources */,
+				90BD9BE91B95AD7500028B26 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,7 +412,7 @@
 				};
 			};
 			buildConfigurationList = 9048D3361B51722600F88FE3 /* Build configuration list for PBXProject "hook" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -415,6 +483,7 @@
 				9048D3411B51722600F88FE3 /* AppDelegate.swift in Sources */,
 				907147261B7B937C00F19C48 /* SWRevealViewController.m in Sources */,
 				9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */,
+				90857CF51B95E48A00A26FAD /* ProfileViewCell.swift in Sources */,
 				9048D3761B517A5F00F88FE3 /* CellData.swift in Sources */,
 				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
 				907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */,
@@ -424,6 +493,7 @@
 				909EB8D11B79F970006661FC /* ConfigViewController.swift in Sources */,
 				907008A21B56FC9000C7B740 /* PhotoViewController.swift in Sources */,
 				9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */,
+				909237E61B97302E00867FF2 /* ContentViewController.swift in Sources */,
 				9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */,
 				906A06F51B788F7600F559D7 /* userFacebook.swift in Sources */,
 				907147231B7A47D100F19C48 /* ProfileNavigationViewController.swift in Sources */,
@@ -564,6 +634,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/hook",
+					"$(PROJECT_DIR)/hook/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hook-frpmkgfzqkfvgrfwctnbflwwllfd/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -586,6 +658,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/hook",
+					"$(PROJECT_DIR)/hook/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hook-frpmkgfzqkfvgrfwctnbflwwllfd/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
