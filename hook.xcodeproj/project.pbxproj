@@ -20,7 +20,7 @@
 		9048D36E1B5172DE00F88FE3 /* coquine6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3661B5172DE00F88FE3 /* coquine6.jpg */; };
 		9048D3701B5172DE00F88FE3 /* loginWallpaper.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */; };
 		9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3731B5178A400F88FE3 /* MainViewController.swift */; };
-		9048D3761B517A5F00F88FE3 /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3751B517A5F00F88FE3 /* CellData.swift */; };
+		9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3751B517A5F00F88FE3 /* cellData.swift */; };
 		9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3791B517C9100F88FE3 /* CellViewController.swift */; };
 		9048D37D1B5192B600F88FE3 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37B1B5192B600F88FE3 /* chat.png */; };
 		9048D37E1B5192B600F88FE3 /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37C1B5192B600F88FE3 /* hook.png */; };
@@ -103,7 +103,7 @@
 		9048D3661B5172DE00F88FE3 /* coquine6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine6.jpg; path = ../../../Downloads/coquine6.jpg; sourceTree = "<group>"; };
 		9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginWallpaper.jpeg; path = ../../../Downloads/loginWallpaper.jpeg; sourceTree = "<group>"; };
 		9048D3731B5178A400F88FE3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9048D3751B517A5F00F88FE3 /* CellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		9048D3751B517A5F00F88FE3 /* cellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellData.swift; sourceTree = "<group>"; };
 		9048D3791B517C9100F88FE3 /* CellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 		9048D37B1B5192B600F88FE3 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		9048D37C1B5192B600F88FE3 /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook.png; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 				909EB8C81B78F30B006661FC /* ProfileViewController.swift */,
 				909237E51B97302E00867FF2 /* ContentViewController.swift */,
 				9048D3791B517C9100F88FE3 /* CellViewController.swift */,
-				9048D3751B517A5F00F88FE3 /* CellData.swift */,
+				9048D3751B517A5F00F88FE3 /* cellData.swift */,
 				90857CF41B95E48A00A26FAD /* ProfileViewCell.swift */,
 			);
 			name = profile;
@@ -484,7 +484,7 @@
 				907147261B7B937C00F19C48 /* SWRevealViewController.m in Sources */,
 				9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */,
 				90857CF51B95E48A00A26FAD /* ProfileViewCell.swift in Sources */,
-				9048D3761B517A5F00F88FE3 /* CellData.swift in Sources */,
+				9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */,
 				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
 				907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */,
 				9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */,

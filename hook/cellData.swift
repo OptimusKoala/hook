@@ -13,18 +13,18 @@ class cellData  {
     let name : String
     let description : String
     let type : String
-    let image : String
+    let images : [String]
     let age : String
     let connect : Bool
     
     // ------------------------
     // Constructor
     
-    init(myName : String, myDescription : String, myType : String, myImage : String, myAge : String, isConnect : Bool){
+    init(myName : String, myDescription : String, myType : String, myImages : [String], myAge : String, isConnect : Bool){
         self.name = myName
         self.description = myDescription
         self.type = myType
-        self.image = myImage
+        self.images = myImages
         self.age = myAge
         self.connect = isConnect
     }
