@@ -45,7 +45,7 @@ class LGChatMessage : NSObject {
             if let sentBy = SentBy(rawValue: newValue) {
                 self.sentBy = sentBy
             } else {
-                println("LGChatMessage.FatalError : Property Set : Incompatible string set to SentByString!")
+                print("LGChatMessage.FatalError : Property Set : Incompatible string set to SentByString!")
             }
         }
     }
@@ -129,7 +129,7 @@ class LGChatMessageCell : UITableViewCell {
             self.layer.borderWidth = 2.0
         }
         
-        required init(coder aDecoder: NSCoder) {
+        required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
     }
@@ -255,7 +255,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         
         // This code is used to display the menu button instead of the "< back" from messages
         // only if the previous VC is the menu. 
-        let numberOfPreviousVC : Int! = self.navigationController?.viewControllers?.count
+        let numberOfPreviousVC : Int! = self.navigationController?.viewControllers.count
         if (numberOfPreviousVC == 1)
         {
             let image = UIImage(named: "menu.png")
@@ -326,8 +326,8 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     private func setupLayoutConstraints() {
-        chatInput.setTranslatesAutoresizingMaskIntoConstraints(false)
-        tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        chatInput.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints(self.chatInputConstraints())
         self.view.addConstraints(self.tableViewConstraints())
     }
@@ -387,7 +387,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
             chatInputOffset = 0
         }
         self.bottomChatInputConstraint.constant = chatInputOffset
-        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(animationCurve), animations: { () -> Void in
+        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.scrollToBottom()
             }, completion: {(finished) -> () in
@@ -409,7 +409,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
         self.view.layoutIfNeeded()
         self.bottomChatInputConstraint.constant = -keyboardHeight
-        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(animationCurve), animations: { () -> Void in
+        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.scrollToBottom()
             }, completion: {(finished) -> () in
@@ -426,7 +426,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
         self.view.layoutIfNeeded()
         self.bottomChatInputConstraint.constant = 0.0
-        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(animationCurve), animations: { () -> Void in
+        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.scrollToBottom()
             }, completion: {(finished) -> () in
@@ -512,7 +512,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("identifier", forIndexPath: indexPath) as! LGChatMessageCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("identifier", forIndexPath: indexPath) as! LGChatMessageCell
         let message = self.messages[indexPath.row]
         cell.opponentImageView.image = message.sentBy == .Opponent ? self.opponentImage : nil
         cell.setupWithMessage(message)
@@ -577,7 +577,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     // MARK: Private Properties
     
     private let textView = LGStretchyTextView(frame: CGRectZero, textContainer: nil)
-    private let sendButton = UIButton.buttonWithType(.System) as! UIButton
+    private let sendButton = UIButton(type: .System)
     private let blurredBackgroundView: UIToolbar = UIToolbar()
     private var heightConstraint: NSLayoutConstraint!
     private var sendButtonHeightConstraint: NSLayoutConstraint!
@@ -590,14 +590,14 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
         self.stylize()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Setup
     
     func setup() {
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setupSendButton()
         self.setupSendButtonConstraints()
         self.setupTextView()
@@ -631,8 +631,8 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     }
     
     func setupSendButtonConstraints() {
-        self.sendButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.sendButton.removeConstraints(self.sendButton.constraints())
+        self.sendButton.translatesAutoresizingMaskIntoConstraints = false
+        self.sendButton.removeConstraints(self.sendButton.constraints)
         
         // TODO: Fix so that button height doesn't change on first newLine
         let rightConstraint = NSLayoutConstraint(item: self, attribute: .Right, relatedBy: .Equal, toItem: self.sendButton, attribute: .Right, multiplier: 1.0, constant: textViewInsets.right)
@@ -643,7 +643,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     }
     
     func setupTextViewConstraints() {
-        self.textView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.textView.translatesAutoresizingMaskIntoConstraints = false
         let topConstraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.textView, attribute: .Top, multiplier: 1.0, constant: -textViewInsets.top)
         let leftConstraint = NSLayoutConstraint(item: self, attribute: .Left, relatedBy: .Equal, toItem: self.textView, attribute: .Left, multiplier: 1, constant: -textViewInsets.left)
         let bottomConstraint = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: self.textView, attribute: .Bottom, multiplier: 1, constant: textViewInsets.bottom)
@@ -658,7 +658,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     }
     
     func setupBlurredBackgroundViewConstraints() {
-        self.blurredBackgroundView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.blurredBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         let topConstraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.blurredBackgroundView, attribute: .Top, multiplier: 1.0, constant: 0)
         let leftConstraint = NSLayoutConstraint(item: self, attribute: .Left, relatedBy: .Equal, toItem: self.blurredBackgroundView, attribute: .Left, multiplier: 1.0, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: self.blurredBackgroundView, attribute: .Bottom, multiplier: 1.0, constant: 0)
@@ -682,7 +682,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     
     func stretchyTextViewDidChangeSize(textView: LGStretchyTextView) {
         let textViewHeight = CGRectGetHeight(textView.bounds)
-        if count(textView.text) == 0 {
+        if textView.text.characters.count == 0 {
             self.sendButtonHeightConstraint.constant = textViewHeight
         }
         let targetConstant = textViewHeight + textViewInsets.top + textViewInsets.bottom
@@ -697,7 +697,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     // MARK: Button Presses
     
     func sendButtonPressed(sender: UIButton) {
-        if count(self.textView.text) > 0 {
+        if self.textView.text.characters.count > 0 {
             self.delegate?.chatInput(self, didSendMessage: self.textView.text)
             self.textView.text = ""
         }
@@ -757,7 +757,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
         }
     }
     
-    override var font: UIFont! {
+    override var font: UIFont? {
         didSet {
             sizingTextView.font = font
         }
@@ -776,7 +776,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
         self.setup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -810,7 +810,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
         
         sizingTextView.text = self.text
         let targetSize = sizingTextView.sizeThatFits(maxSize)
-        var targetHeight = targetSize.height
+        let targetHeight = targetSize.height
         let maxHeight = self.maxHeight
         return targetHeight < maxHeight ? targetHeight : maxHeight
     }
@@ -819,7 +819,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     
     func align() {
         
-        let caretRect: CGRect = self.caretRectForPosition(self.selectedTextRange?.end)
+        let caretRect: CGRect = self.caretRectForPosition((self.selectedTextRange?.end)!)
         
         let topOfLine = CGRectGetMinY(caretRect)
         let bottomOfLine = CGRectGetMaxY(caretRect)
@@ -853,6 +853,6 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
         
         // TODO: Possibly filter spaces and newlines
         
-        self.isValid = count(textView.text) > 0
+        self.isValid = textView.text.characters.count > 0
     }
 }

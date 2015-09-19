@@ -44,13 +44,13 @@ class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate, SWReveal
         
         if (error != nil)
         {
-            println("Error")
+            print("Error")
         }
     }
 
     // Facebook Delegate Methods
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+        print("User Logged Out")
         performSegueWithIdentifier("fbLogOut", sender: self)
     }
     

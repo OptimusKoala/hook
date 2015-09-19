@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YTh-us-mqa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YTh-us-mqa">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,8 +19,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="118" id="qV5-U1-1yZ" customClass="CellViewController" customModule="hook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="66" width="600" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qV5-U1-1yZ" id="3am-fm-XE1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="117.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxG-PJ-hXM">
@@ -199,11 +202,17 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                </variation>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-tv-3VQ">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="390" width="515" height="30"/>
+                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaJ-uC-Erv">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -246,6 +255,9 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="495" width="515" height="30"/>
+                                </variation>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-l4-Alw">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -259,7 +271,8 @@
                                         <exclude reference="t5x-WC-qBv"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="217.5" y="70" width="165" height="165"/>
                                     <mask key="constraints">
                                         <include reference="sbJ-XI-Roy"/>
                                         <include reference="t5x-WC-qBv"/>
@@ -365,15 +378,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wye-0Q-s30">
-                            <rect key="frame" x="0.0" y="242" width="600" height="568"/>
+                            <rect key="frame" x="0.0" y="350" width="600" height="568"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="4" maxY="10"/>
                             <prototypes>
                                 <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="50" id="Hkr-UX-qeq" customClass="ContactViewCell" customModule="hook" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="22" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hkr-UX-qeq" id="fTD-kC-i67">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-e8-NAD">
@@ -494,8 +508,10 @@
                         </tableView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCellUser" rowHeight="238" id="Gk0-t5-Odv" customClass="MenuViewCell" customModule="hook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="42" width="600" height="238"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="Gk0-t5-Odv" id="If6-Ap-fT2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="238"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_heart_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="mwd-Fw-T8E">
@@ -629,8 +645,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="70" id="n4t-7d-HVf">
+                                <rect key="frame" x="0.0" y="280" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="n4t-7d-HVf" id="buy-pt-BZw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnR-n6-PoN">
@@ -946,7 +964,8 @@
                                                 <exclude reference="PBE-8t-dme"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact">
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="230" y="55" width="140" height="133"/>
                                             <mask key="constraints">
                                                 <include reference="LsP-tO-Qvl"/>
                                                 <include reference="PBE-8t-dme"/>
@@ -968,7 +987,8 @@
                                                 <exclude reference="aP7-EO-ptm"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact">
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="203.5" y="382" width="193" height="28"/>
                                             <mask key="constraints">
                                                 <include reference="FbX-ZO-M06"/>
                                                 <include reference="aP7-EO-ptm"/>
@@ -978,6 +998,9 @@
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="y78-y2-84D">
                                         <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                         <color key="color" red="0.52302522622158976" green="0.61941681179876307" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="290" y="418" width="20" height="20"/>
+                                        </variation>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -1005,7 +1028,8 @@
                                         <exclude reference="pXu-9e-pK7"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="-5" width="600" height="605"/>
                                     <mask key="subviews">
                                         <include reference="hyS-2W-xtd"/>
                                         <include reference="gZf-n7-KKh"/>
@@ -1161,6 +1185,9 @@
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="57" y="452" width="486" height="43"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH9-tK-sHY">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1177,7 +1204,8 @@
                                         <exclude reference="zCy-Zx-u77"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="451" y="513" width="39" height="38"/>
                                     <mask key="constraints">
                                         <include reference="ono-7z-EgV"/>
                                         <include reference="zCy-Zx-u77"/>
@@ -1197,7 +1225,8 @@
                                         <exclude reference="RJZ-fB-QXv"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="499" y="511" width="44" height="41"/>
                                     <mask key="constraints">
                                         <include reference="RJZ-fB-QXv"/>
                                     </mask>
@@ -1391,8 +1420,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yourHooks" rowHeight="100" id="Ggs-DK-vlj" customClass="YourHooksViewController" customModule="hook">
+                                <rect key="frame" x="0.0" y="22" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ggs-DK-vlj" id="mP7-Pg-9Lr">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_heart_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="B7x-P8-ECy">
@@ -1523,6 +1554,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photosCell" id="klu-t4-FYx" customClass="PhotoViewCell" customModule="hook" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -1652,6 +1684,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="104" y="38" width="476" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utilisateur :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW6-wR-i6w">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -1687,7 +1722,8 @@
                                         <exclude reference="zcp-nj-iBS"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="191" width="560" height="28"/>
                                     <mask key="constraints">
                                         <include reference="zcp-nj-iBS"/>
                                     </mask>

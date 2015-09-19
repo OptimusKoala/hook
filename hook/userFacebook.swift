@@ -10,21 +10,21 @@ import Foundation
 
 class userFacebook {
     // parameters
-    var userName : String = "error" {
+    var userName : String = "fail" {
         didSet {
-            println("fb username ok")
+            print("fb username ok")
         }
     }
     
-    var userMail : String = "error" {
+    var userMail : String = "fail" {
         didSet {
-            println("fb mail ok")
+            print("fb mail ok")
         }
     }
     
-    var userFullName : String = "error" {
+    var userFullName : String = "fail" {
         didSet {
-            println("fb full name ok")
+            print("fb full name ok")
         }
     }
     
@@ -46,17 +46,15 @@ class userFacebook {
             if ((error) != nil)
             {
                 // Process error
-                println("Error: \(error)")
+                print("Error: \(error)")
             }
             else
             {
+                self.userMail = result["email"] as! String
                 self.userFullName = result["name"] as! String
                 self.userName = result["first_name"] as! String
-                self.userMail = result["email"] as! String
-                
             }
         })
-
     }
     // ------------------------
     // get data functions
@@ -74,7 +72,6 @@ class userFacebook {
     {
         return self.userFullName
     }
-
     
     // ----------
 }

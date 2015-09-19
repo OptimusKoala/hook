@@ -14,15 +14,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     // Data from previousVC
     var previousVC : String = "Login"
     // list of data for cells
-    var dataList = [cellData]()
-    // my objects cells
-    var myData = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg","coquine1.jpg"], myAge: "22", isConnect: true)
-    var myData2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg","coquine2.jpg","coquine2.jpg"], myAge: "19", isConnect: true)
-    var myData3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg","coquine3.jpg","coquine3.jpg"], myAge: "21", isConnect: false)
-    var myData4 = cellData(myName: "Lussa 2", myDescription: "Yolo 2", myType: "Sportif", myImages: ["coquine4.jpg","coquine4.jpg","coquine4.jpg"], myAge: "23", isConnect: true)
-    var myData5 = cellData(myName: "Coucou", myDescription: "Jsuis une tepu", myType: "Sportif", myImages: ["coquine5.jpg","coquine5.jpg","coquine5.jpg"], myAge: "20", isConnect: true)
-    var myData6 = cellData(myName: "Hey", myDescription: "la bite", myType: "Sportif", myImages: ["coquine6.jpg","coquine6.jpg","coquine6.jpg"], myAge: "19", isConnect: false)
-    var myData7 = cellData(myName: "Liche", myDescription: "Salut pd", myType: "Sportif", myImages: ["coquine2.jpg","coquine6.jpg","coquine6.jpg"], myAge: "23", isConnect: false)
+    var dataList = [UserProfile]()
     
     // hook images
     let fullHeart = UIImage(named: "full_heart_icon")
@@ -36,19 +28,14 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         // delegate to login view
-        let loginVC : LoginViewController = LoginViewController()
+        LoginViewController()
         
         // Enable swrevalviewcontroller delegate method
         self.revealViewController().delegate = self
         
         // Insert data in my array
-        dataList.insert(myData, atIndex: 0)
-        dataList.insert(myData2, atIndex: 1)
-        dataList.insert(myData3, atIndex: 2)
-        dataList.insert(myData4, atIndex: 3)
-        dataList.insert(myData5, atIndex: 4)
-        dataList.insert(myData6, atIndex: 5)
-        dataList.insert(myData7, atIndex: 6)
+        parseJSON(getJSON("http://localhost/webServiceSelect.php"))
+        
         
         //-----------------------------------
         // Print and init menu button 
@@ -65,7 +52,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             // navigation bar desapear
             self.revealViewController().revealToggleAnimated(true)
         }
-        
+
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = true
 
@@ -135,7 +122,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToProfile"
         {
-            let cell : cellData = dataList[cellIndex]
+            let cell : UserProfile = dataList[cellIndex]
             
             let nav = segue.destinationViewController as! ProfileViewController
             nav.profile = cell
@@ -164,6 +151,57 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             menuIsOn = true
         }
     }
+    
+    // Json get data function
+    func getJSON(urlToRequest: String) -> NSData
+    {
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    // JSON parse data function
+    func parseJSON(dataURL: NSData)
+    {
+        // Function that parse the json array to variables
+        let array : NSData = dataURL
+        let json = JSON(data: array)
+        for result in json.arrayValue {
+            let id = result["id"].stringValue
+            let jsonName = result["name"].stringValue
+            let jsonMail = result["mail"].stringValue
+            let jsonSexe = result["sexe"].stringValue
+            let jsonDescription = result["description"].stringValue
+            let jsonGender = result["gender"].stringValue
+            let jsonType = result["type"].stringValue
+            let jsonAge = result["age"].stringValue
+            let jsonImage = result["image"].stringValue
+            let jsonImage2 = result["image2"].stringValue
+            let jsonImage3 = result["image3"].stringValue
+            var jsonConnect : Bool!
+            if (result["connect"].stringValue == "true"){
+                jsonConnect = true
+            }
+            else{
+                jsonConnect = false
+            }
+            
+            var jsonMyImages : [String]!
+            if ((jsonImage != "") && (jsonImage2 != ""))
+            {
+                if (jsonImage3 != "")
+                {
+                    jsonMyImages = [jsonImage,jsonImage2,jsonImage3]
+                }
+                jsonMyImages = [jsonImage,jsonImage2]
+            }
+            else
+            {
+                jsonMyImages = [jsonImage]
+            }
+            let myDataJSON = UserProfile(myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
+            dataList.append(myDataJSON)
+        }
+    }
+    
     // -------------------------------------------
     
     /*

@@ -10,7 +10,7 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
-    var data : cellData!
+    var data : UserProfile!
     
     // View Controller items
     @IBOutlet weak var profileImage: UIImageView!
@@ -21,6 +21,9 @@ class EditProfileViewController: UIViewController {
     // -----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userFb : userFacebook = userFacebook()
+        print(userFb.getUserMail())
         
         let image = UIImage(named: data.images[0])
         profileImage.image = image

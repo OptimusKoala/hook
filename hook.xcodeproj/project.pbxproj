@@ -20,7 +20,7 @@
 		9048D36E1B5172DE00F88FE3 /* coquine6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3661B5172DE00F88FE3 /* coquine6.jpg */; };
 		9048D3701B5172DE00F88FE3 /* loginWallpaper.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */; };
 		9048D3741B5178A400F88FE3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3731B5178A400F88FE3 /* MainViewController.swift */; };
-		9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3751B517A5F00F88FE3 /* cellData.swift */; };
+		9048D3761B517A5F00F88FE3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3751B517A5F00F88FE3 /* UserProfile.swift */; };
 		9048D37A1B517C9100F88FE3 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048D3791B517C9100F88FE3 /* CellViewController.swift */; };
 		9048D37D1B5192B600F88FE3 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37B1B5192B600F88FE3 /* chat.png */; };
 		9048D37E1B5192B600F88FE3 /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 9048D37C1B5192B600F88FE3 /* hook.png */; };
@@ -59,6 +59,8 @@
 		909EB8D11B79F970006661FC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EB8D01B79F970006661FC /* ConfigViewController.swift */; };
 		90A324AF1B5BBD3700299E57 /* icone_hook_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */; };
 		90BD9BB31B89E25A00028B26 /* fond2.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BD9BB21B89E25A00028B26 /* fond2.png */; };
+		90DB6C291BA8B23200A7E012 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB6C281BA8B23200A7E012 /* SwiftyJSON.swift */; };
+		90DEFFD01BAAEDF700992ADF /* MainUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DEFFCF1BAAEDF700992ADF /* MainUserProfile.swift */; };
 		90F8F5061B6830FD00541B06 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +105,7 @@
 		9048D3661B5172DE00F88FE3 /* coquine6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coquine6.jpg; path = ../../../Downloads/coquine6.jpg; sourceTree = "<group>"; };
 		9048D3681B5172DE00F88FE3 /* loginWallpaper.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginWallpaper.jpeg; path = ../../../Downloads/loginWallpaper.jpeg; sourceTree = "<group>"; };
 		9048D3731B5178A400F88FE3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9048D3751B517A5F00F88FE3 /* cellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellData.swift; sourceTree = "<group>"; };
+		9048D3751B517A5F00F88FE3 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		9048D3791B517C9100F88FE3 /* CellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 		9048D37B1B5192B600F88FE3 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		9048D37C1B5192B600F88FE3 /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook.png; sourceTree = "<group>"; };
@@ -144,6 +146,8 @@
 		909EB8D01B79F970006661FC /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		90A324AE1B5BBD3700299E57 /* icone_hook_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_hook_blue.png; sourceTree = "<group>"; };
 		90BD9BB21B89E25A00028B26 /* fond2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fond2.png; sourceTree = "<group>"; };
+		90DB6C281BA8B23200A7E012 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		90DEFFCF1BAAEDF700992ADF /* MainUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUserProfile.swift; sourceTree = "<group>"; };
 		90F8F5051B6830FD00541B06 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +203,7 @@
 				909237E41B96F0BE00867FF2 /* Hooks */,
 				909237E31B96F0B500867FF2 /* config */,
 				90857CF91B95EB1B00A26FAD /* design */,
+				90DB6C271BA8B19B00A7E012 /* json */,
 				9048D3401B51722600F88FE3 /* AppDelegate.swift */,
 				9048D3731B5178A400F88FE3 /* MainViewController.swift */,
 				9048D3471B51722600F88FE3 /* Images.xcassets */,
@@ -295,8 +300,9 @@
 				907147221B7A47D100F19C48 /* ProfileNavigationViewController.swift */,
 				909EB8C81B78F30B006661FC /* ProfileViewController.swift */,
 				909237E51B97302E00867FF2 /* ContentViewController.swift */,
+				90DEFFCF1BAAEDF700992ADF /* MainUserProfile.swift */,
 				9048D3791B517C9100F88FE3 /* CellViewController.swift */,
-				9048D3751B517A5F00F88FE3 /* cellData.swift */,
+				9048D3751B517A5F00F88FE3 /* UserProfile.swift */,
 				90857CF41B95E48A00A26FAD /* ProfileViewCell.swift */,
 			);
 			name = profile;
@@ -343,6 +349,14 @@
 				9048D3931B532A2700F88FE3 /* HooksViewController.swift */,
 			);
 			name = Hooks;
+			sourceTree = "<group>";
+		};
+		90DB6C271BA8B19B00A7E012 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				90DB6C281BA8B23200A7E012 /* SwiftyJSON.swift */,
+			);
+			name = json;
 			sourceTree = "<group>";
 		};
 		90F8F5091B6ABBE200541B06 /* messages */ = {
@@ -398,7 +412,9 @@
 		9048D3331B51722600F88FE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Michal;
 				TargetAttributes = {
 					9048D33A1B51722600F88FE3 = {
@@ -483,8 +499,10 @@
 				9048D3411B51722600F88FE3 /* AppDelegate.swift in Sources */,
 				907147261B7B937C00F19C48 /* SWRevealViewController.m in Sources */,
 				9048D3961B53DB5F00F88FE3 /* YourHooksViewController.swift in Sources */,
+				90DEFFD01BAAEDF700992ADF /* MainUserProfile.swift in Sources */,
+				90DB6C291BA8B23200A7E012 /* SwiftyJSON.swift in Sources */,
 				90857CF51B95E48A00A26FAD /* ProfileViewCell.swift in Sources */,
-				9048D3761B517A5F00F88FE3 /* cellData.swift in Sources */,
+				9048D3761B517A5F00F88FE3 /* UserProfile.swift in Sources */,
 				907008B21B582F8800C7B740 /* MenuViewController.swift in Sources */,
 				907008B61B5835A100C7B740 /* MenuViewCell.swift in Sources */,
 				9048D3941B532A2700F88FE3 /* HooksViewController.swift in Sources */,
@@ -563,6 +581,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -639,8 +658,10 @@
 				);
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "hook/hook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -663,8 +684,10 @@
 				);
 				INFOPLIST_FILE = hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "hook/hook-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -684,6 +707,7 @@
 				);
 				INFOPLIST_FILE = hookTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hook.app/hook";
 			};
@@ -699,6 +723,7 @@
 				);
 				INFOPLIST_FILE = hookTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hook.app/hook";
 			};

@@ -21,21 +21,21 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     // index to pass data to profileView
     var cellIndex : Int!
     // list of data for cells
-    var contactList = [cellData]()
-    // Create fbUser object
-    let userFb : userFacebook = userFacebook()
+    var contactList = [UserProfile]()
     // user profil cells
-    var myData : cellData!
+    var myData : UserProfile!
     // contact user cells
-    var contact1 = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg","coquine1.jpg"], myAge: "22", isConnect: true)
-    var contact2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg","coquine2.jpg","coquine2.jpg"], myAge: "19", isConnect: true)
-    var contact3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg","coquine3.jpg","coquine3.jpg"], myAge: "21", isConnect: false)
+    var contact1 = UserProfile(myName: "Coquine", myMail: "truc@liche.com", mySexe: "f", myDescription: "Michal je t'aime <3", myGender: "h", myType: "Sportif", myImages: ["coquine1.jpg","coquine1.jpg"], myAge: "22", isConnect: true)
+    var contact2 = UserProfile(myName: "Coquinette", myMail: "truc@liche.com", mySexe: "f", myDescription: "Michal casse moi <3", myGender: "h", myType: "Sportif", myImages: ["coquine2.jpg","coquine2.jpg","coquine2.jpg"], myAge: "19", isConnect: true)
+    var contact3 = UserProfile(myName: "Lussa", myMail: "truc@liche.com", mySexe: "f", myDescription: "Yolo", myGender: "h",myType: "Sportif", myImages: ["coquine3.jpg","coquine3.jpg","coquine3.jpg"], myAge: "21", isConnect: false)
     // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Init user data
-        myData = cellData(myName: "Michal", myDescription: "Bouffeur de cul de profession, j'aime la viande fraiche à déguster sans modération!", myType: "Sportif", myImages: ["michal.jpg"], myAge: "22", isConnect: true)
+        let mainUser : MainUserProfile = MainUserProfile(fbMail: parseJSON(getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString)))
+        myData = mainUser.getMainUser()
         
         // resize contact tableview to enable scroll
         let screenSize : CGRect = UIScreen.mainScreen().bounds
@@ -137,7 +137,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 return cellUser
             }
             else {
-                let cellMenu = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! UITableViewCell
+                let cellMenu = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) 
                 cellMenu.backgroundColor = UIColor(patternImage: UIImage(named: "fond_cell.png")!)
                 return cellMenu
             }
@@ -147,7 +147,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             let cellContact = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! ContactViewCell
             let (contact) = contactList[indexPath.row]
             let image = UIImage(named: contact.images[0])
-            var layer : CALayer? = cellContact.contactImage.layer
+            let layer : CALayer? = cellContact.contactImage.layer
             layer!.cornerRadius = 22
             layer!.borderWidth = 1.3
             layer!.masksToBounds = true
@@ -173,13 +173,13 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editProfile"
         {
-            let data : cellData = myData
+            let data : UserProfile = myData
             let nav = segue.destinationViewController as! EditProfileViewController
             nav.data = data
         }
         if segue.identifier == "goToProfileFromMenu"
         {
-            let cell : cellData = contactList[cellIndex]
+            let cell : UserProfile = contactList[cellIndex]
             let nav = segue.destinationViewController as! ProfileNavigationViewController
             let navVC = nav.viewControllers.first as! ProfileViewController
             navVC.profile = cell
@@ -278,6 +278,21 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
+    }
+    
+    // Json get data function
+    func getJSON(urlToRequest: String) -> NSData
+    {
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    // JSON parse data function
+    func parseJSON(dataURL: NSData) -> String
+    {
+        // Function that parse the json array to variables
+        let array : NSData = dataURL
+        let json = JSON(data: array)
+        return json["email"].stringValue
     }
     
     /*

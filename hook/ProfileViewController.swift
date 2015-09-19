@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // passed data from main view controller
-    var profile : cellData!
+    var profile : UserProfile!
     
     // create arrays for carousel
     var pageViewController: UIPageViewController!
@@ -36,11 +36,10 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
         // Do any additional setup after loading the view.
         self.title = profile.name
         
-        let numberOfPreviousVC : Int! = self.navigationController?.viewControllers?.count
+        let numberOfPreviousVC : Int! = self.navigationController?.viewControllers.count
         if (numberOfPreviousVC == 1)
         {
             let image = UIImage(named: "menu.png")
-            let navBar : UINavigationBar
             let menubutton : UIBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "")
             
             if self.revealViewController() != nil {
@@ -124,13 +123,13 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
     */
     func pageViewController(pageViewController: UIPageViewController,
         didFinishAnimating finished: Bool,
-        previousViewControllers: [AnyObject],
+        previousViewControllers: [UIViewController],
         transitionCompleted completed: Bool)
     {
         // Turn is either finished or aborted
         if (completed && finished) {
             // let previousViewController = previousViewControllers[0] as ContentViewController
-            let currentDisplayedViewController = self.pageViewController!.viewControllers[0] as! ContentViewController
+            let currentDisplayedViewController = self.pageViewController!.viewControllers![0] as! ContentViewController
             self.pageControl.currentPage = currentDisplayedViewController.index
         }
     }

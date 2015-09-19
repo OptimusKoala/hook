@@ -13,11 +13,11 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     // index to pass data to profileView
     var cellIndex : Int!
     // list of data for cells
-    var hooksList = [cellData]()
+    var hooksList = [UserProfile]()
     // my objects cells
-    var myHook = cellData(myName: "Coquine", myDescription: "Michal je t'aime <3", myType: "Sportif", myImages: ["coquine1.jpg"], myAge: "22", isConnect: true)
-    var myHook2 = cellData(myName: "Coquinette", myDescription: "Michal casse moi <3", myType: "Sportif", myImages: ["coquine2.jpg"], myAge: "19", isConnect: true)
-    var myHook3 = cellData(myName: "Lussa", myDescription: "Yolo", myType: "Sportif", myImages: ["coquine3.jpg"], myAge: "21", isConnect: false)
+    var myHook = UserProfile(myName: "Coquine", myMail: "test@liche.com", mySexe: "f", myDescription: "Michal je t'aime <3", myGender: "h", myType: "Sportif", myImages: ["coquine1.jpg"], myAge: "22", isConnect: true)
+    var myHook2 = UserProfile(myName: "Coquinette", myMail: "test@liche.com", mySexe: "f", myDescription: "Michal casse moi <3", myGender: "h", myType: "Sportif", myImages: ["coquine2.jpg"], myAge: "19", isConnect: true)
+    var myHook3 = UserProfile(myName: "Lussa", myMail: "test@liche.com", mySexe: "f", myDescription: "Yolo", myGender: "h", myType: "Sportif", myImages: ["coquine3.jpg"], myAge: "21", isConnect: false)
     // ------------------------------------
     var menuIsOn : Bool = false
 
@@ -90,7 +90,7 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToProfileFromHook"
         {
-            let cell : cellData = hooksList[cellIndex]
+            let cell : UserProfile = hooksList[cellIndex]
             
             let nav = segue.destinationViewController as! ProfileViewController
             nav.profile = cell

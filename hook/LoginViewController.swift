@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() == nil)
         {
             // User is not already logged
-            println("No Logged")
+            print("No Logged")
             loading.hidden = true
             fbButton.readPermissions = ["public_profile", "email", "user_friends"]
             fbButton.delegate = self
@@ -31,8 +31,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else
         {
             fbButton.hidden = true
-            println("Already Logged")
+            print("Already Logged")
             performSegueWithIdentifier("Login", sender: self)
+            parseJSON(getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString))
         }
         // Hide navigation bar when log out
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -43,7 +44,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (error != nil)
         {
-            println("Error")
+            print("Error")
         }
         else {
             // If you ask for multiple permissions at once, you
@@ -52,17 +53,31 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Do work
             }
-            println("User logged in")
+            print("User logged in")
             performSegueWithIdentifier("Login", sender: self)
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+        print("User Logged Out")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Json get data function
+    func getJSON(urlToRequest: String) -> NSData
+    {
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    // JSON parse data function
+    func parseJSON(dataURL: NSData)
+    {
+        // Function that parse the json array to variables
+        let array : NSData = dataURL
+        let json = JSON(data: array)
     }
 }

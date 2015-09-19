@@ -8,10 +8,13 @@
 
 import Foundation
 
-class cellData  {
+class UserProfile  {
     // parameters
     let name : String
+    let mail : String
+    let sexe : String
     let description : String
+    let gender : String
     let type : String
     let images : [String]
     let age : String
@@ -20,9 +23,12 @@ class cellData  {
     // ------------------------
     // Constructor
     
-    init(myName : String, myDescription : String, myType : String, myImages : [String], myAge : String, isConnect : Bool){
+    init(myName : String, myMail : String, mySexe : String, myDescription : String, myGender : String, myType : String, myImages : [String], myAge : String, isConnect : Bool){
         self.name = myName
+        self.mail = myMail
+        self.sexe = mySexe
         self.description = myDescription
+        self.gender = myGender
         self.type = myType
         self.images = myImages
         self.age = myAge

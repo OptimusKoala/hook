@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Change navigationBar color
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.translucent = false
         navigationBarAppearace.tintColor = uicolorFromHex(0xffffff)
         navigationBarAppearace.barTintColor = uicolorFromHex(0x279df1)
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
-        annotation: AnyObject?) -> Bool {
+        annotation: AnyObject) -> Bool {
             return FBSDKApplicationDelegate.sharedInstance().application(
                 application,
                 openURL: url,
