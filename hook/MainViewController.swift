@@ -34,7 +34,8 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         self.revealViewController().delegate = self
         
         // Insert data in my array
-        parseJSON(getJSON("http://localhost/webServiceSelect.php"))
+        let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
+        parseJSON(getJSON("http://localhost/webServiceSelect.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
         
         
         //-----------------------------------
@@ -165,7 +166,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         let array : NSData = dataURL
         let json = JSON(data: array)
         for result in json.arrayValue {
-            let id = result["id"].stringValue
+            let jsonId = result["id"].intValue
             let jsonName = result["name"].stringValue
             let jsonMail = result["mail"].stringValue
             let jsonSexe = result["sexe"].stringValue
@@ -197,7 +198,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             {
                 jsonMyImages = [jsonImage]
             }
-            let myDataJSON = UserProfile(myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
+            let myDataJSON = UserProfile(myId: jsonId, myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
             dataList.append(myDataJSON)
         }
     }

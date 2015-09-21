@@ -10,6 +10,7 @@ import Foundation
 
 class UserProfile  {
     // parameters
+    let id : Int
     let name : String
     let mail : String
     let sexe : String
@@ -23,7 +24,8 @@ class UserProfile  {
     // ------------------------
     // Constructor
     
-    init(myName : String, myMail : String, mySexe : String, myDescription : String, myGender : String, myType : String, myImages : [String], myAge : String, isConnect : Bool){
+    init(myId : Int, myName : String, myMail : String, mySexe : String, myDescription : String, myGender : String, myType : String, myImages : [String], myAge : String, isConnect : Bool){
+        self.id = myId
         self.name = myName
         self.mail = myMail
         self.sexe = mySexe

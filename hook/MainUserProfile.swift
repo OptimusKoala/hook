@@ -17,10 +17,11 @@ class MainUserProfile {
     }
 
     // constructor
-    init(fbMail: String)
+    init(token: String)
     {
-        self.parseJSON(self.getJSON("http://localhost/webServiceSelectUser.php?mail=%22" + fbMail + "%22"))
-        
+        let array : NSData = getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + token)
+        let json = JSON(data: array)
+        self.parseJSON(self.getJSON("http://localhost/webServiceSelectUser.php?mail=%22" + json["email"].stringValue + "%22"))
     }
     
     // functions
@@ -34,6 +35,15 @@ class MainUserProfile {
         self.mainUser = data
     }
     
+    func getMainUserEmail() -> String
+    {
+        return self.mainUser.mail
+    }
+    
+    func getMainUserId() -> Int
+    {
+        return self.mainUser.id
+    }
     
     // Json get data function
     func getJSON(urlToRequest: String) -> NSData
@@ -50,7 +60,7 @@ class MainUserProfile {
         print(json["name"].stringValue)
         var myDataJSON : UserProfile!
         for result in json.arrayValue {
-            let id = result["id"].stringValue
+            let jsonId = result["id"].intValue
             let jsonName = result["name"].stringValue
             let jsonMail = result["mail"].stringValue
             let jsonSexe = result["sexe"].stringValue
@@ -82,7 +92,7 @@ class MainUserProfile {
             {
                 jsonMyImages = [jsonImage]
             }
-            myDataJSON = UserProfile(myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
+            myDataJSON = UserProfile(myId: jsonId, myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
             setMainUser(myDataJSON)
         }
     }

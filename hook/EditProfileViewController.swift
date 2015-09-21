@@ -22,9 +22,6 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userFb : userFacebook = userFacebook()
-        print(userFb.getUserMail())
-        
         let image = UIImage(named: data.images[0])
         profileImage.image = image
         profileName.text = data.name
@@ -54,18 +51,6 @@ class EditProfileViewController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     
-    //Function to hide status bar
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    // pass data for MainViewController
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "EditProfile")
-        {
-            let nav = segue.destinationViewController as! SWRevealViewController
-        }
-    }
     /*
     // MARK: - Navigation
 

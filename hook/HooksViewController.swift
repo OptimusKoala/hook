@@ -14,10 +14,6 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
     var cellIndex : Int!
     // list of data for cells
     var hooksList = [UserProfile]()
-    // my objects cells
-    var myHook = UserProfile(myName: "Coquine", myMail: "test@liche.com", mySexe: "f", myDescription: "Michal je t'aime <3", myGender: "h", myType: "Sportif", myImages: ["coquine1.jpg"], myAge: "22", isConnect: true)
-    var myHook2 = UserProfile(myName: "Coquinette", myMail: "test@liche.com", mySexe: "f", myDescription: "Michal casse moi <3", myGender: "h", myType: "Sportif", myImages: ["coquine2.jpg"], myAge: "19", isConnect: true)
-    var myHook3 = UserProfile(myName: "Lussa", myMail: "test@liche.com", mySexe: "f", myDescription: "Yolo", myGender: "h", myType: "Sportif", myImages: ["coquine3.jpg"], myAge: "21", isConnect: false)
     // ------------------------------------
     var menuIsOn : Bool = false
 
@@ -29,9 +25,9 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
         self.revealViewController().delegate = self
         
         // Insert data in my array
-        hooksList.insert(myHook, atIndex: 0)
-        hooksList.insert(myHook2, atIndex: 1)
-        hooksList.insert(myHook3, atIndex: 2)
+        let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
+        parseJSON(getJSON("http://localhost/webServiceSelectHooks.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
+        
         //-----------------------------------
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -117,6 +113,59 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
         } else {
             self.tableView.scrollEnabled = false
             menuIsOn = true
+        }
+    }
+    
+    // Json get data function
+    func getJSON(urlToRequest: String) -> NSData
+    {
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    // JSON parse data function
+    func parseJSON(dataURL: NSData)
+    {
+        // Function that parse the json array to variables
+        let array : NSData = dataURL
+        let jsonHook = JSON(data: array)
+        for result in jsonHook.arrayValue {
+            let array2 : NSData = getJSON("http://localhost/webServiceSelectUser.php?mail=%22" + result["mail"].stringValue + "%22")
+            let json = JSON(data: array2)
+            for result in json.arrayValue {
+                let jsonId = result["id"].intValue
+                let jsonName = result["name"].stringValue
+                let jsonMail = result["mail"].stringValue
+                let jsonSexe = result["sexe"].stringValue
+                let jsonDescription = result["description"].stringValue
+                let jsonGender = result["gender"].stringValue
+                let jsonType = result["type"].stringValue
+                let jsonAge = result["age"].stringValue
+                let jsonImage = result["image"].stringValue
+                let jsonImage2 = result["image2"].stringValue
+                let jsonImage3 = result["image3"].stringValue
+                var jsonConnect : Bool!
+                if (result["connect"].stringValue == "true"){
+                    jsonConnect = true
+                }
+                else{
+                    jsonConnect = false
+                }
+                var jsonMyImages : [String]!
+                if ((jsonImage != "") && (jsonImage2 != ""))
+                {
+                    if (jsonImage3 != "")
+                    {
+                        jsonMyImages = [jsonImage,jsonImage2,jsonImage3]
+                    }
+                    jsonMyImages = [jsonImage,jsonImage2]
+                }
+                else
+                {
+                    jsonMyImages = [jsonImage]
+                }
+                let myDataJSON = UserProfile(myId: jsonId, myName: jsonName, myMail: jsonMail, mySexe: jsonSexe, myDescription: jsonDescription, myGender : jsonGender, myType: jsonType, myImages: jsonMyImages, myAge: jsonAge, isConnect: jsonConnect)
+                hooksList.append(myDataJSON)
+            }
         }
     }
     // -------------------------------------------
