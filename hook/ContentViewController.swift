@@ -18,6 +18,7 @@ class ContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.imageProfile.contentMode = UIViewContentMode.ScaleAspectFit
         self.imageProfile.image = self.myImage
         
         // Do any additional setup after loading the view.

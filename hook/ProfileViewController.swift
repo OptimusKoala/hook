@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
     
     var arrayViewControllers: [UIViewController] = []
     
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileAge: UILabel!
     @IBOutlet weak var profileDesc: UILabel!
@@ -52,19 +53,24 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
             self.navigationItem.setLeftBarButtonItem(menubutton, animated: true)
         }
         
-        // Array containing UIViewControllers which are in fact under the hood
-        // downcasted ContentViewControllers.
-        self.initArrayViewControllers()
-        
-        // UIPageViewController initialization and configuration.
-        let toolbarHeight : CGFloat = 200.0
-        self.initPageViewController(toolbarHeight)
-        
-        // Retrieving UIPageControl
-        self.initPageControl()
-        
-        self.pageControl.currentPageIndicatorTintColor = uicolorFromHex(0x279df1)
-        self.pageControl.pageIndicatorTintColor = uicolorFromHex(0x96c9ed)
+        if (arrayInformationMessages.count < 2)
+        {
+            let image = UIImage(named: arrayInformationMessages[0])
+            profileImage.image = image
+        }
+        else
+        {
+            // Array containing UIViewControllers which are in fact under the hood
+            // downcasted ContentViewControllers.
+            self.initArrayViewControllers()
+            // UIPageViewController initialization and configuration.
+            let toolbarHeight : CGFloat = 170.0
+            self.initPageViewController(toolbarHeight)
+            // Retrieving UIPageControl
+            self.initPageControl()
+            self.pageControl.currentPageIndicatorTintColor = uicolorFromHex(0x279df1)
+            self.pageControl.pageIndicatorTintColor = uicolorFromHex(0x96c9ed)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,7 +134,6 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
     {
         // Turn is either finished or aborted
         if (completed && finished) {
-            // let previousViewController = previousViewControllers[0] as ContentViewController
             let currentDisplayedViewController = self.pageViewController!.viewControllers![0] as! ContentViewController
             self.pageControl.currentPage = currentDisplayedViewController.index
         }
@@ -145,9 +150,7 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
     }
     
     private func initPageViewController(let toolbarHeight: CGFloat) {
-        //        self.pageViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PagesWidgetID") as! UIPageViewController
         self.pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
-        
         if let pageViewController = self.pageViewController {
             let initViewController = self.arrayViewControllers[0] as! ContentViewController
             let vcArray = [initViewController]
@@ -158,7 +161,7 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
             pageViewController.setViewControllers(vcArray, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
             self.addChildViewController(pageViewController)
             self.view.addSubview(pageViewController.view)
-            //pageViewController.view.clipsToBounds = true
+            pageViewController.view.clipsToBounds = true
             pageViewController.didMoveToParentViewController(self)
         }
     }

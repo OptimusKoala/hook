@@ -10,11 +10,7 @@ import Foundation
 
 class MainUserProfile {
     // Parameters
-    var mainUser : UserProfile! {
-        didSet {
-            print("MainProfile ok!")
-        }
-    }
+    var mainUser : UserProfile!
 
     // constructor
     init(token: String)

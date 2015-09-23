@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             fbButton.hidden = true
             print("Already Logged")
             performSegueWithIdentifier("Login", sender: self)
-            parseJSON(getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString))
+            getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString)
         }
         // Hide navigation bar when log out
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -71,13 +71,5 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func getJSON(urlToRequest: String) -> NSData
     {
         return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
-    }
-    
-    // JSON parse data function
-    func parseJSON(dataURL: NSData)
-    {
-        // Function that parse the json array to variables
-        let array : NSData = dataURL
-        let json = JSON(data: array)
     }
 }
