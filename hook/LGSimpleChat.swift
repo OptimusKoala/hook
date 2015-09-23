@@ -45,7 +45,7 @@ class LGChatMessage : NSObject {
             if let sentBy = SentBy(rawValue: newValue) {
                 self.sentBy = sentBy
             } else {
-                print("LGChatMessage.FatalError : Property Set : Incompatible string set to SentByString!")
+                print("LGChatMessage.Error : Property Set : Incompatible string set to SentByString!")
             }
         }
     }
@@ -129,7 +129,7 @@ class LGChatMessageCell : UITableViewCell {
             self.layer.borderWidth = 2.0
         }
         
-        required init?(coder aDecoder: NSCoder) {
+        required init(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
     }
@@ -247,14 +247,19 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: Life Cycle
-
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.setup()
         
+        // Here add messages -----------------------------------------------------------
+        addNewMessage(LGChatMessage(content: "Liche", sentBy: .User))
+        addNewMessage(LGChatMessage(content: "Toi liche ouais!", sentBy: .Opponent))
+        
+        // -----------------------------------------------------------------------------
+        
         // This code is used to display the menu button instead of the "< back" from messages
-        // only if the previous VC is the menu. 
+        // only if the previous VC is the menu.
         let numberOfPreviousVC : Int! = self.navigationController?.viewControllers.count
         if (numberOfPreviousVC == 1)
         {
@@ -269,13 +274,6 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
             
             self.navigationItem.setLeftBarButtonItem(menubutton, animated: true)
         }
-        
-         // -------------------------
-        /*let width = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 12)
-        let height = NSLayoutConstraint(item: backButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 20)
-        backButton.addConstraint(width)
-        backButton.addConstraint(height)*/
-        // -------------------------
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -333,7 +331,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     private func chatInputConstraints() -> [NSLayoutConstraint] {
-        self.bottomChatInputConstraint = NSLayoutConstraint(item: chatInput, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        self.bottomChatInputConstraint = NSLayoutConstraint(item: chatInput, attribute: .Bottom, relatedBy: .Equal, toItem: self.bottomLayoutGuide, attribute: .Top, multiplier: 1.0, constant: 0)
         let leftConstraint = NSLayoutConstraint(item: chatInput, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
         let rightConstraint = NSLayoutConstraint(item: chatInput, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0.0)
         return [leftConstraint, self.bottomChatInputConstraint, rightConstraint]
@@ -351,26 +349,14 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     private func listenForKeyboardChanges() {
         let defaultCenter = NSNotificationCenter.defaultCenter()
-        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
-            defaultCenter.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-            defaultCenter.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        } else {
-            defaultCenter.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        }
+        defaultCenter.addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     private func unregisterKeyboardObservers() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    // MARK: iOS 8 Keyboard Animations
-    
     func keyboardWillChangeFrame(note: NSNotification) {
-        
-        /*
-        NOTE: For iOS 8 Only, will cause autolayout issues in iOS 7
-        */
-        
         let keyboardAnimationDetail = note.userInfo!
         let duration = keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
         var keyboardFrame = (keyboardAnimationDetail[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
@@ -382,7 +368,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         self.tableView.scrollEnabled = false
         self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
         self.view.layoutIfNeeded()
-        var chatInputOffset = -(CGRectGetHeight(self.view.bounds) - CGRectGetMinY(keyboardFrame))
+        var chatInputOffset = -((CGRectGetHeight(self.view.bounds) - self.bottomLayoutGuide.length) - CGRectGetMinY(keyboardFrame))
         if chatInputOffset > 0 {
             chatInputOffset = 0
         }
@@ -396,51 +382,14 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         })
     }
     
-    // MARK: iOS 7 Compatibility Keyboard Animations
-    
-    func keyboardWillShow(note: NSNotification) {
-        let keyboardAnimationDetail = note.userInfo!
-        let duration = keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
-        let keyboardFrame = (keyboardAnimationDetail[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        let animationCurve = keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] as! UInt
-        let keyboardHeight = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ? CGRectGetHeight(keyboardFrame) : CGRectGetWidth(keyboardFrame)
-        
-        self.tableView.scrollEnabled = false
-        self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
-        self.view.layoutIfNeeded()
-        self.bottomChatInputConstraint.constant = -keyboardHeight
-        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
-            self.view.layoutIfNeeded()
-            self.scrollToBottom()
-            }, completion: {(finished) -> () in
-                self.tableView.scrollEnabled = true
-                self.tableView.decelerationRate = UIScrollViewDecelerationRateNormal
-        })
-    }
-    
-    func keyboardWillHide(note: NSNotification) {
-        let keyboardAnimationDetail = note.userInfo!
-        let duration = keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
-        let animationCurve = keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] as! UInt
-        self.tableView.scrollEnabled = false
-        self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
-        self.view.layoutIfNeeded()
-        self.bottomChatInputConstraint.constant = 0.0
-        UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
-            self.view.layoutIfNeeded()
-            self.scrollToBottom()
-            }, completion: {(finished) -> () in
-                self.tableView.scrollEnabled = true
-                self.tableView.decelerationRate = UIScrollViewDecelerationRateNormal
-        })
-    }
-    
     // MARK: Rotation
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         self.tableView.reloadData()
     }
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             self.scrollToBottom()
             }, completion: nil)
@@ -590,7 +539,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
         self.stylize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -624,9 +573,9 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     
     func setupSendButton() {
         self.sendButton.enabled = false
-        self.sendButton.setTitle("Envoyer", forState: .Normal)
+        self.sendButton.setTitle("Send", forState: .Normal)
         self.sendButton.addTarget(self, action: "sendButtonPressed:", forControlEvents: .TouchUpInside)
-        self.sendButton.bounds = CGRect(x: 0, y: 0, width: 70, height: 1)
+        self.sendButton.bounds = CGRect(x: 0, y: 0, width: 40, height: 1)
         self.addSubview(sendButton)
     }
     
@@ -637,7 +586,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
         // TODO: Fix so that button height doesn't change on first newLine
         let rightConstraint = NSLayoutConstraint(item: self, attribute: .Right, relatedBy: .Equal, toItem: self.sendButton, attribute: .Right, multiplier: 1.0, constant: textViewInsets.right)
         let bottomConstraint = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: self.sendButton, attribute: .Bottom, multiplier: 1.0, constant: textViewInsets.bottom)
-        let widthConstraint = NSLayoutConstraint(item: self.sendButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 70)
+        let widthConstraint = NSLayoutConstraint(item: self.sendButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40)
         sendButtonHeightConstraint = NSLayoutConstraint(item: self.sendButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30)
         self.addConstraints([sendButtonHeightConstraint, widthConstraint, rightConstraint, bottomConstraint])
     }
@@ -734,15 +683,10 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
         }
     }
     
-    private var _isValid = false
-    private var isValid: Bool {
-        get {
-            return _isValid
-        }
-        set {
-            if _isValid != newValue {
-                _isValid = newValue
-                self.stretchyTextViewDelegate?.stretchyTextView?(self, validityDidChange: _isValid)
+    private var isValid: Bool = false {
+        didSet {
+            if isValid != oldValue {
+                stretchyTextViewDelegate?.stretchyTextView?(self, validityDidChange: isValid)
             }
         }
     }
@@ -753,11 +697,11 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     
     override var contentSize: CGSize {
         didSet {
-            self.resizeAndAlign()
+            resize()
         }
     }
     
-    override var font: UIFont? {
+    override var font: UIFont! {
         didSet {
             sizingTextView.font = font
         }
@@ -773,33 +717,26 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     
     override init(frame: CGRect = CGRectZero, textContainer: NSTextContainer? = nil) {
         super.init(frame: frame, textContainer: textContainer);
-        self.setup()
+        setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Setup
     
     func setup() {
-        self.font = UIFont.systemFontOfSize(17.0)
-        self.textContainerInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        self.delegate = self
-    }
-    
-    // MARK: Resize & Align
-    
-    func resizeAndAlign() {
-        self.resize()
-        self.align()
+        font = UIFont.systemFontOfSize(17.0)
+        textContainerInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        delegate = self
     }
     
     // MARK: Sizing
     
     func resize() {
-        self.bounds.size.height = self.targetHeight()
-        self.stretchyTextViewDelegate?.stretchyTextViewDidChangeSize(self)
+        bounds.size.height = self.targetHeight()
+        stretchyTextViewDelegate?.stretchyTextViewDidChangeSize(self)
     }
     
     func targetHeight() -> CGFloat {
@@ -818,8 +755,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     // MARK: Alignment
     
     func align() {
-        
-        let caretRect: CGRect = self.caretRectForPosition((self.selectedTextRange?.end)!)
+        guard let end = self.selectedTextRange?.end, let caretRect: CGRect = self.caretRectForPosition(end) else { return }
         
         let topOfLine = CGRectGetMinY(caretRect)
         let bottomOfLine = CGRectGetMaxY(caretRect)
@@ -850,9 +786,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        
         // TODO: Possibly filter spaces and newlines
-        
         self.isValid = textView.text.characters.count > 0
     }
 }
