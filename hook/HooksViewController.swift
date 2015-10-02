@@ -129,7 +129,7 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
         let array : NSData = dataURL
         let jsonHook = JSON(data: array)
         for result in jsonHook.arrayValue {
-            let array2 : NSData = getJSON("http://localhost/webServiceSelectUser.php?mail=%22" + result["mail"].stringValue + "%22")
+            let array2 : NSData = getJSON("http://176.31.165.78/hook/webServiceSelectUser.php?mail=%22" + result["mail"].stringValue + "%22")
             let json = JSON(data: array2)
             for result in json.arrayValue {
                 let jsonId = result["id"].intValue

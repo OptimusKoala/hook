@@ -15,6 +15,8 @@ class CellViewController: UITableViewCell {
     @IBOutlet weak var imageCell: UIButton!
     @IBOutlet weak var ageCell: UILabel!
     @IBOutlet weak var connectCell: UILabel!
+    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var heartButton: UIButton!
     
     // ---------------------------
     override func awakeFromNib() {

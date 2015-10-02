@@ -179,6 +179,15 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
         self.pageControl = pageControl
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "msg2"
+        {
+            let nav = segue.destinationViewController as! LGChatController
+            nav.user = profile
+        }
+    }
+
+    
     // Function used to add color with hexa code
     func uicolorFromHex(rgbValue:UInt32)->UIColor{
         let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0

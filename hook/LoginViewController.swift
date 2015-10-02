@@ -30,10 +30,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            fbButton.hidden = true
+            getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString)
             print("Already Logged")
             performSegueWithIdentifier("Login", sender: self)
-            getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + FBSDKAccessToken.currentAccessToken().tokenString)
         }
         // Hide navigation bar when log out
         navigationController?.setNavigationBarHidden(true, animated: false)

@@ -20,6 +20,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     var clicked : Bool = false
     // index to pass data to profileView
     var cellIndex : Int!
+    var cellMessageIndex : Int!
     // list of data for cells
     var contactList = [UserProfile]()
     // user profil cells
@@ -185,6 +186,13 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             let navVC = nav.viewControllers.first as! MainViewController
             navVC.previousVC = "Menu"
         }
+        if segue.identifier == "msg3"
+        {
+            let cell : UserProfile = contactList[cellMessageIndex]
+            let nav = segue.destinationViewController as! UINavigationController
+            let navVC = nav.viewControllers.first as! LGChatController
+            navVC.user = cell
+        }
     }
 
     @IBAction func clickButton(sender: UIButton) {
@@ -240,6 +248,11 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 tableView.beginUpdates()
                 tableView.endUpdates()
             }
+        }
+        if (tableView==self.contactTableView)
+        {
+            cellMessageIndex = indexPath.row
+            performSegueWithIdentifier("msg3", sender: self)
         }
     }
     

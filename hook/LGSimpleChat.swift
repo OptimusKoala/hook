@@ -79,6 +79,11 @@ class LGChatMessage : NSObject {
             fatalError("LGChatMessage.FatalError : Initialization : Incompatible string set to SentByString!")
         }
     }
+    
+    func getContent() -> String
+    {
+        return content.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
 }
 
 // MARK: Message Cell
@@ -245,17 +250,18 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     private let chatInput = LGChatInput(frame: CGRectZero)
     private var bottomChatInputConstraint: NSLayoutConstraint!
     
+    // init main user profile
+    let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
+    
+    var user : UserProfile!
     
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        
-        // Here add messages -----------------------------------------------------------
-        addNewMessage(LGChatMessage(content: "Liche", sentBy: .User))
-        addNewMessage(LGChatMessage(content: "Toi liche ouais!", sentBy: .Opponent))
-        
+        // Add all messages ------------------------------------------------------------
+        parseJSON(getJSON("http://localhost/webServiceSelectMessages.php?id=" + String(mainUser.getMainUserId()) + "&id2=" + String(user.id)))
         // -----------------------------------------------------------------------------
         
         // This code is used to display the menu button instead of the "< back" from messages
@@ -411,6 +417,14 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     // MARK: New messages
     
     func addNewMessage(message: LGChatMessage) {
+        insertMessage(message)
+        messages += [message]
+        tableView.reloadData()
+        self.scrollToBottom()
+        self.delegate?.chatController?(self, didAddNewMessage: message)
+    }
+    
+    func addMessage(message: LGChatMessage) {
         messages += [message]
         tableView.reloadData()
         self.scrollToBottom()
@@ -468,6 +482,45 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         return cell;
     }
     
+    func insertMessage(message : LGChatMessage)
+    {
+        // Add message into BDD
+        getJSON("http://localhost/webServiceInsertMessage.php?content=%20" + message.getContent() + "%20&read=0&authorId=" + String(mainUser.getMainUserId()) + "&opponentId=" + String(user.id))
+        // -------------------------------------------------------------
+    }
+    
+    // Json get data function
+    func getJSON(urlToRequest: String) -> NSData
+    {
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    // JSON parse data function
+    func parseJSON(dataURL: NSData)
+    {
+        // Function that parse the json array to variables
+        let array : NSData = dataURL
+        let json = JSON(data: array)
+        for result in json.arrayValue {
+            let jsonId = result["id"].intValue
+            let jsonConversId = result["conversid"].intValue
+            let jsonContent = result["content"].stringValue
+            let jsonTime = result["time"].stringValue
+            let jsonRead = result["read"].boolValue
+            let jsonAuthorId = result["authorId"].intValue
+            // --------------------------------------------------
+            if (jsonAuthorId == mainUser.getMainUserId())
+            {
+                let myMessage = LGChatMessage(content: jsonContent, sentBy: .User)
+                addMessage(myMessage)
+            }
+            else
+            {
+                let myMessage = LGChatMessage(content: jsonContent, sentBy: .Opponent)
+                addMessage(myMessage)
+            }
+        }
+    }
 }
 
 // MARK: Chat Input

@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UITableViewController, SWRevealViewControllerDelegate {
     // Index for profile
     var cellIndex : Int!
+    var cellMessageIndex : Int!
     // Data from previousVC
     var previousVC : String = "Login"
     // list of data for cells
@@ -35,6 +36,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         
         // Insert data in my array
         let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
+        // Server adress is : 176.31.165.78/hook
         parseJSON(getJSON("http://localhost/webServiceSelect.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
         
         
@@ -99,6 +101,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.imageCell.tag = indexPath.row
+        cell.messageButton.tag = indexPath.row
         return cell
     }
     
@@ -119,6 +122,12 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             // Do a tag gesture to reload mainview
         }
     }
+
+    @IBAction func messageClick(sender: UIButton) {
+        
+        cellMessageIndex = sender.tag
+        performSegueWithIdentifier("msg1", sender: self)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToProfile"
@@ -127,6 +136,12 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
             
             let nav = segue.destinationViewController as! ProfileViewController
             nav.profile = cell
+        }
+        if segue.identifier == "msg1"
+        {
+            let cell : UserProfile = dataList[cellMessageIndex]
+            let nav = segue.destinationViewController as! LGChatController
+            nav.user = cell
         }
     }
     
@@ -245,7 +260,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
+    // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
     */
