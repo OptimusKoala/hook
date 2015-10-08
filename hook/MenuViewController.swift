@@ -47,7 +47,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         
         //add contact into contact list
         // Insert data in my array
-        parseJSON(getJSON("http://localhost/webServiceSelectConversations.php?id=" + String(mainUser.getMainUserId())))
+        parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelectConversations.php?id=" + String(mainUser.getMainUserId())))
         
         // Add bg color to view, used to hide white status bar
         view.backgroundColor = uicolorFromHex(0x279df1)
@@ -116,7 +116,11 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cellUser.userImage.layer.borderColor = UIColor.whiteColor().CGColor
                 cellUser.userImage.layer.cornerRadius = cellUser.userImage.frame.height/2.6
                 cellUser.userImage.clipsToBounds = true
-                cellUser.userImage.image = UIImage(named: "michal.jpg")
+                if let url = NSURL(string: myData.images[0]) {
+                    if let data = NSData(contentsOfURL: url){
+                        cellUser.userImage.image = UIImage(data: data)
+                    }
+                }
                 cellUser.userName.text = myData.name
                 cellUser.userDesc.text = myData.description
                 cellUser.userAge.text = myData.age + " ans"

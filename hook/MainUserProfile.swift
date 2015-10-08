@@ -17,7 +17,7 @@ class MainUserProfile {
     {
         let array : NSData = getJSON("https://graph.facebook.com/me/?fields=email&access_token=" + token)
         let json = JSON(data: array)
-        self.parseJSON(self.getJSON("http://localhost/webServiceSelectUser.php?mail=%22" + json["email"].stringValue + "%22"))
+        self.parseJSON(self.getJSON("http://176.31.165.78/hook/webServiceSelectUser.php?mail=%22" + json["email"].stringValue + "%22"))
     }
     
     // functions
@@ -41,6 +41,11 @@ class MainUserProfile {
         return self.mainUser.id
     }
     
+    func setMainUserImage(url : String)
+    {
+        self.mainUser.images[0] = url
+    }
+    
     // Json get data function
     func getJSON(urlToRequest: String) -> NSData
     {
@@ -53,7 +58,6 @@ class MainUserProfile {
         // Function that parse the json array to variables
         let array : NSData = dataURL
         let json = JSON(data: array)
-        print(json["name"].stringValue)
         var myDataJSON : UserProfile!
         for result in json.arrayValue {
             let jsonId = result["id"].intValue

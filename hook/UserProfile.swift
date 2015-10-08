@@ -10,16 +10,16 @@ import Foundation
 
 class UserProfile  {
     // parameters
-    let id : Int
-    let name : String
-    let mail : String
-    let sexe : String
-    let description : String
-    let gender : String
-    let type : String
-    let images : [String]
-    let age : String
-    let connect : Bool
+    var id : Int
+    var name : String
+    var mail : String
+    var sexe : String
+    var description : String
+    var gender : String
+    var type : String
+    var images : [String]
+    var age : String
+    var connect : Bool
     
     // ------------------------
     // Constructor

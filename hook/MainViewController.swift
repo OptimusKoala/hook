@@ -37,8 +37,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         // Insert data in my array
         let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
         // Server adress is : 176.31.165.78/hook
-        parseJSON(getJSON("http://localhost/webServiceSelect.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
-        
+        parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelect.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
         
         //-----------------------------------
         // Print and init menu button 
@@ -54,6 +53,13 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         {
             // navigation bar desapear
             self.revealViewController().revealToggleAnimated(true)
+        }
+        
+        // Reload app badge if needed
+        let currentInstallation = PFInstallation.currentInstallation()
+        if (currentInstallation.badge != 0) {
+            currentInstallation.badge = 0
+            currentInstallation.saveEventually()
         }
 
         // Uncomment the following line to preserve selection between presentations

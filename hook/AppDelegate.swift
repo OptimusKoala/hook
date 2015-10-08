@@ -44,12 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
             let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else {
-            application.registerForRemoteNotificationTypes([.Alert, .Badge, .Sound])
+            application.registerForRemoteNotifications()
         }
         // ------------------------------------------------------------------------
         // Override point for customization after application launch.
@@ -101,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
+        installation.channels = ["NewMessages"]
         installation.saveInBackground()
     }
     
@@ -113,9 +113,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        let notification:NSDictionary = userInfo["aps"] as! NSDictionary
+        
+        if (notification.objectForKey("content-available") != nil){
+            if notification.objectForKey("content-available")!.isEqualToNumber(1){
+                NSNotificationCenter.defaultCenter().postNotificationName("reloadMessages", object: nil)
+                print("Silent notification detected")
+            }
+        } else {
+            if application.applicationState == UIApplicationState.Inactive {
+                PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+            }
+            else {
+                PFPush.handlePush(userInfo)
+            }
         }
     }
 }

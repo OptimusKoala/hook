@@ -845,6 +845,8 @@ const int FrontViewPositionNone = 0xff;
         toggledFrontViewPosition = FrontViewPositionRight;
     
     [self setFrontViewPosition:toggledFrontViewPosition animated:animated];
+    
+    [self.view endEditing:YES];
 }
 
 

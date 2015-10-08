@@ -225,7 +225,7 @@ class LGChatMessageCell : UITableViewCell {
     optional func chatController(chatController: LGChatController, didAddNewMessage message: LGChatMessage)
 }
 
-class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataSource, LGChatInputDelegate {
+class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataSource, LGChatInputDelegate, SWRevealViewControllerDelegate {
     
     // MARK: Constants
     
@@ -254,15 +254,28 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
     
     var user : UserProfile!
+    var menuIsOn : Bool = false
     
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        // Enable swrevalviewcontroller delegate method
+        self.revealViewController().delegate = self
+        
+        // Add the conversation if isn't exist -----------------------------------------
+        getJSON("http://176.31.165.78/hook/webServiceInsertConversation.php?user1=" + String(mainUser.getMainUserId()) + "&user2=" + String(user.id))
         // Add all messages ------------------------------------------------------------
-        parseJSON(getJSON("http://localhost/webServiceSelectMessages.php?id=" + String(mainUser.getMainUserId()) + "&id2=" + String(user.id)))
+        parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelectMessages.php?id=" + String(mainUser.getMainUserId()) + "&id2=" + String(user.id)))
         // -----------------------------------------------------------------------------
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadNewMessages", name: "reloadMessages", object: nil)
         
         // This code is used to display the menu button instead of the "< back" from messages
         // only if the previous VC is the menu.
@@ -277,9 +290,50 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
                 menubutton.action = "revealToggle:"
                 self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             }
-            
             self.navigationItem.setLeftBarButtonItem(menubutton, animated: true)
+            
+            if ((self.view.gestureRecognizers) != nil)
+            {
+                DismissKeyboard()
+            }
+            
         }
+    }
+    
+    // -------------------------------------------
+    // Delegate method of SWRevealViewController
+    // Used to disable scroll and useractivity in views
+    func revealController(revealController: SWRevealViewController!,  willMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.tableView.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.tableView.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    
+    // ---
+    func revealController(revealController: SWRevealViewController!,  didMoveToPosition position: FrontViewPosition){
+        if(position == FrontViewPosition.Left) {
+            self.tableView.scrollEnabled = true
+            menuIsOn = false
+        } else {
+            self.tableView.scrollEnabled = false
+            menuIsOn = true
+        }
+    }
+    
+    //Calls this function when the tap is recognized.
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func loadNewMessages()
+    {
+        // load and add new messages
+        parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelectMessagesUnread.php?id=" + String(mainUser.getMainUserId()) + "&id2=" + String(user.id)))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -447,6 +501,14 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         if shouldSendMessage {
             self.addNewMessage(newMessage)
         }
+        // Send silent notification
+        let push:PFPush = PFPush()
+        push.setChannel("NewMessage")
+        
+        let data:NSDictionary = ["alert":"", "badge":"0", "content-available":"1","sound":""]
+        
+        push.setData(data as [NSObject : AnyObject])
+        push.sendPushInBackground()
     }
     
     // MARK: UITableViewDelegate
@@ -485,7 +547,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     func insertMessage(message : LGChatMessage)
     {
         // Add message into BDD
-        getJSON("http://localhost/webServiceInsertMessage.php?content=%20" + message.getContent() + "%20&read=0&authorId=" + String(mainUser.getMainUserId()) + "&opponentId=" + String(user.id))
+        getJSON("http://176.31.165.78/hook/webServiceInsertMessage.php?content=%20" + message.getContent() + "%20&read=0&authorId=" + String(mainUser.getMainUserId()) + "&opponentId=" + String(user.id))
         // -------------------------------------------------------------
     }
     
@@ -509,6 +571,10 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
             let jsonRead = result["read"].boolValue
             let jsonAuthorId = result["authorId"].intValue
             // --------------------------------------------------
+            if (jsonRead == false) && (jsonAuthorId != mainUser.getMainUserId())
+            {
+                getJSON("http://176.31.165.78/hook/webServiceUpdateMessageRead.php?id=" + String(jsonId))
+            }
             if (jsonAuthorId == mainUser.getMainUserId())
             {
                 let myMessage = LGChatMessage(content: jsonContent, sentBy: .User)

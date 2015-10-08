@@ -26,7 +26,7 @@ class HooksViewController: UITableViewController, SWRevealViewControllerDelegate
         
         // Insert data in my array
         let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
-        parseJSON(getJSON("http://localhost/webServiceSelectHooks.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
+        parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelectHooks.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
         
         //-----------------------------------
         if self.revealViewController() != nil {
