@@ -86,7 +86,10 @@ class MainUserProfile {
                 {
                     jsonMyImages = [jsonImage,jsonImage2,jsonImage3]
                 }
-                jsonMyImages = [jsonImage,jsonImage2]
+                else
+                {
+                    jsonMyImages = [jsonImage,jsonImage2]
+                }
             }
             else
             {

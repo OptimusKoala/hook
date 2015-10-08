@@ -327,11 +327,15 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             var jsonMyImages : [String]!
             if ((jsonImage != "") && (jsonImage2 != ""))
             {
+                print(jsonImage3)
                 if (jsonImage3 != "")
                 {
                     jsonMyImages = [jsonImage,jsonImage2,jsonImage3]
                 }
-                jsonMyImages = [jsonImage,jsonImage2]
+                else
+                {
+                    jsonMyImages = [jsonImage,jsonImage2]
+                }
             }
             else
             {

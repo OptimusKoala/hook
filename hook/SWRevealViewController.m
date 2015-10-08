@@ -1539,6 +1539,7 @@ const int FrontViewPositionNone = 0xff;
         {
             if ( [_delegate respondsToSelector:@selector(revealController:didMoveToPosition:)] )
                 [_delegate revealController:self didMoveToPosition:newPosition];
+                [self.view endEditing:YES];
         }
     };
 
