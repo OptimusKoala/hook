@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             // User is not already logged
             print("No Logged")
             loading.hidden = true
-            fbButton.readPermissions = ["public_profile", "email", "user_friends"]
+            fbButton.readPermissions = ["user_photos", "public_profile", "email", "user_friends"]
             fbButton.delegate = self
         }
         else

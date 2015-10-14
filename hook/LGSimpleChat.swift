@@ -547,7 +547,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     func insertMessage(message : LGChatMessage)
     {
         // Add message into BDD
-        getJSON("http://176.31.165.78/hook/webServiceInsertMessage.php?content=%20" + message.getContent() + "%20&read=0&authorId=" + String(mainUser.getMainUserId()) + "&opponentId=" + String(user.id))
+        getJSON("http://176.31.165.78/hook/webServiceInsertMessage.php?content=%20" + message.getContent().stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSCharacterSet)! + "%20&read=0&authorId=" + String(mainUser.getMainUserId()) + "&opponentId=" + String(user.id))
         // -------------------------------------------------------------
     }
     

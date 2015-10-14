@@ -41,11 +41,6 @@ class MainUserProfile {
         return self.mainUser.id
     }
     
-    func setMainUserImage(url : String)
-    {
-        self.mainUser.images[0] = url
-    }
-    
     // Json get data function
     func getJSON(urlToRequest: String) -> NSData
     {

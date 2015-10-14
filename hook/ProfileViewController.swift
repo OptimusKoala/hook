@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileAge: UILabel!
     @IBOutlet weak var profileDesc: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,8 +56,11 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
         
         if (arrayInformationMessages.count < 2)
         {
-            let image = UIImage(named: arrayInformationMessages[0])
-            profileImage.image = image
+            if let url = NSURL(string: self.arrayInformationMessages[0]) {
+                if let data = NSData(contentsOfURL: url){
+                    profileImage.image = UIImage(data: data)
+                }
+            }
         }
         else
         {
@@ -143,8 +147,11 @@ class ProfileViewController: UIViewController, UIPageViewControllerDataSource, U
         for (var i = 0; i < self.arrayInformationMessages.count; i++) {
             let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewControllerID") as! ContentViewController
             contentViewController.index = i
-            let myImage = UIImage(named: self.arrayInformationMessages[i])
-            contentViewController.myImage = myImage
+            if let url = NSURL(string: self.arrayInformationMessages[i]) {
+                if let data = NSData(contentsOfURL: url){
+                    contentViewController.myImage = UIImage(data: data)
+                }
+            }
             self.arrayViewControllers.append(contentViewController)
         }
     }

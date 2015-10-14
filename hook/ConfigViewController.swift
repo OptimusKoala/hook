@@ -17,14 +17,14 @@ class ConfigViewController: UIViewController, FBSDKLoginButtonDelegate, SWReveal
     var menuIsOn : Bool = false
     
     // Create fbUser object
-    let userFb : userFacebook = userFacebook()
+    let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
     // --------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // Enable swrevalviewcontroller delegate method
         self.revealViewController().delegate = self
         
-        nameFB.text = userFb.getUserFullName()
+        nameFB.text = mainUser.getMainUser().name
         // Do any additional setup after loading the view.
         
         // delegate function for button

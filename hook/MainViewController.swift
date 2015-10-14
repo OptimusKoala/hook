@@ -36,7 +36,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         
         // Insert data in my array
         let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
-        // Server adress is : 176.31.165.78/hook
+        // Get profiles data from server
         parseJSON(getJSON("http://176.31.165.78/hook/webServiceSelect.php?mail=%22" + mainUser.getMainUserEmail() + "%22"))
         
         //-----------------------------------
@@ -95,12 +95,15 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! CellViewController
         let (data) = dataList[indexPath.row]
-        let image = UIImage(named: data.images[0])
         // Configure the cell...
-        cell.imageCell.setBackgroundImage(image, forState: UIControlState.Normal)
         cell.nameCell.text = data.name
         cell.descCell.text = data.description
         cell.ageCell.text = String(data.age) + " ans"
+        if let url = NSURL(string: data.images[0]) {
+            if let data = NSData(contentsOfURL: url){
+                cell.imageCell.setBackgroundImage(UIImage(data: data), forState: UIControlState.Normal)
+            }
+        }
         if (data.connect == true)
         {
             cell.connectCell.backgroundColor = UIColor.greenColor()

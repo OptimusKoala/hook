@@ -58,7 +58,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,13 +146,16 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         {
             let cellContact = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! ContactViewCell
             let (contact) = contactList[indexPath.row]
-            let image = UIImage(named: contact.images[0])
             let layer : CALayer? = cellContact.contactImage.layer
             layer!.cornerRadius = 22
             layer!.borderWidth = 1.3
             layer!.masksToBounds = true
             cellContact.contactName.text = contact.name
-            cellContact.contactImage.setBackgroundImage(image, forState: UIControlState.Normal)
+            if let url = NSURL(string: contact.images[0]) {
+                if let data = NSData(contentsOfURL: url){
+                    cellContact.contactImage.setBackgroundImage(UIImage(data: data), forState: UIControlState.Normal)
+                }
+            }
             if (contact.connect == true)
             {
                 cellContact.connectedLabel.backgroundColor = UIColor.greenColor()
@@ -173,9 +176,8 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editProfile"
         {
-            let data : UserProfile = myData
             let nav = segue.destinationViewController as! EditProfileViewController
-            nav.data = data
+            nav.data = myData
         }
         if segue.identifier == "goToProfileFromMenu"
         {
@@ -266,7 +268,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             {
                 if (indexPath.row == 0)
                 {
-                    if (self.expand == false && self.clicked == true)
+                    if ((self.expand == false && self.clicked == true) || (self.expand == true && self.clicked == false))
                     {
                         self.expand = true
                         self.clicked = false
@@ -327,7 +329,6 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             var jsonMyImages : [String]!
             if ((jsonImage != "") && (jsonImage2 != ""))
             {
-                print(jsonImage3)
                 if (jsonImage3 != "")
                 {
                     jsonMyImages = [jsonImage,jsonImage2,jsonImage3]
