@@ -18,6 +18,8 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     var expand : Bool = false
     // check if user click or not
     var clicked : Bool = false
+    // If after edit set to true to reload data
+    var reload : Bool = false
     // index to pass data to profileView
     var cellIndex : Int!
     var cellMessageIndex : Int!
@@ -29,6 +31,9 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Delegate to editProfile
+        EditProfileViewController()
         
         // Init user data
         let mainUser : MainUserProfile = MainUserProfile(token: FBSDKAccessToken.currentAccessToken().tokenString)
@@ -57,6 +62,14 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // refresh view
+        if self.reload == true {
+            super.viewWillAppear(animated)
+            self.userTableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,6 +124,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
             if (indexPath.row == 0) {
                 let cellUser = tableView.dequeueReusableCellWithIdentifier("menuCellUser", forIndexPath: indexPath) as! MenuViewCell
                 // Configure the cell...
+                if (self.reload == false) {
                 cellUser.userImage.layer.masksToBounds = false
                 cellUser.userImage.layer.borderWidth = 3.0
                 cellUser.userImage.layer.borderColor = UIColor.whiteColor().CGColor
@@ -135,6 +149,29 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 cellUser.nbHookLabel.hidden = true
                 cellUser.editLabel.hidden = true
                 return cellUser
+                }
+                else {
+                    if let url = NSURL(string: myData.images[0]) {
+                        if let data = NSData(contentsOfURL: url){
+                            cellUser.userImage.image = UIImage(data: data)
+                        }
+                    }
+                    cellUser.userName.text = myData.name
+                    cellUser.userDesc.text = myData.description
+                    cellUser.userAge.text = myData.age + " ans"
+                    cellUser.userType.text = myData.type
+                    cellUser.backgroundColor = UIColor(patternImage: UIImage(named: "fond2.png")!)
+                    cellUser.userName.hidden = false
+                    cellUser.userAge.hidden = false
+                    cellUser.userDesc.hidden = false
+                    cellUser.userType.hidden = false
+                    cellUser.nbHook.hidden = false
+                    cellUser.hookImage.hidden = false
+                    cellUser.nbHookLabel.hidden = false
+                    cellUser.editLabel.hidden = false
+                    self.reload = false
+                    return cellUser
+                }
             }
             else {
                 let cellMenu = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) 
@@ -176,8 +213,9 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editProfile"
         {
-            let nav = segue.destinationViewController as! EditProfileViewController
-            nav.data = myData
+            let nav = segue.destinationViewController as! UINavigationController
+            let navVC = nav.viewControllers.first as! EditProfileViewController
+            navVC.data = myData
         }
         if segue.identifier == "goToProfileFromMenu"
         {
@@ -219,7 +257,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
         if (tableView==self.userTableView) && (indexPath.row == 0)
         {
             self.clicked = true
-            if (self.expand == false)
+            if (self.expand == false) || (self.reload == true)
             {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! MenuViewCell
                 cell.userName.hidden = false
@@ -235,6 +273,7 @@ class MenuViewController: UITableViewController, SWRevealViewControllerDelegate 
                 // ---------------------
                 tableView.beginUpdates()
                 tableView.endUpdates()
+                self.reload = false
             }
             else
             {

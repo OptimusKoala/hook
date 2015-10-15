@@ -29,8 +29,9 @@ class FbPhotosViewController: UICollectionViewController {
         
         // Background for collection view
         self.collectionView?.backgroundColor = UIColor.whiteColor()
-
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBarHidden = false
     }
 
     override func didReceiveMemoryWarning() {

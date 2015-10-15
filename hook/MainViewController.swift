@@ -51,7 +51,6 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         // if previous was Login, then launch menu
         if (previousVC == "Login")
         {
-            // navigation bar desapear
             self.revealViewController().revealToggleAnimated(true)
         }
         
@@ -69,6 +68,7 @@ class MainViewController: UITableViewController, SWRevealViewControllerDelegate 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    // Unset value of previousVC
     func sendVC(data: NSString) {
         previousVC = data as String
     }

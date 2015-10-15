@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController, UITextFieldDelegate {
+class EditProfileViewController: UIViewController, UITextFieldDelegate, SWRevealViewControllerDelegate {
     
     // View Controller items
     @IBOutlet weak var profileImage1: UIImageView!
@@ -19,6 +19,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var profileGender: UISegmentedControl!
     @IBOutlet weak var profileType: UIPickerView!
     @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     // Datas
     var data : UserProfile!
@@ -33,6 +34,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     // -----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Enable swrevalviewcontroller delegate method
+        self.revealViewController().delegate = self
+        
         // Array of imagesView
         var images : [UIImageView] = [profileImage1, profileImage2, profileImage3]
         gender = data.gender
@@ -64,6 +68,20 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         // View title
         self.title = data.name
         
+        // hide navigation bar when back from fb photos
+        self.navigationController?.navigationBarHidden = true
+        
+        //-----------------------------------
+        // Print and init menu button
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         // hide navigation bar when back from fb photos
         self.navigationController?.navigationBarHidden = true
     }
@@ -102,20 +120,13 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // User clicked on "Cancel" button
-    @IBAction func cancelAction(sender: AnyObject) {
-        // Do nothing but go back to menu view controller
-        self.performSegueWithIdentifier("backEdit", sender: self)
-    }
-    
-    
-    // User clicked on "Done" button
-    @IBAction func doneAction(sender: UIBarButtonItem) {
+    // User clicked on "Valider" button
+    @IBAction func editAction(sender: UIBarButtonItem) {
         // Do SQL request to insert new data in profile
         let url : String = "http://176.31.165.78/hook/webServiceUpdateUser.php?id=" + String(data.id) + "&name=%22" + data.name.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSCharacterSet)! + "%22&description=%22" + data.description.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSCharacterSet)! + "%22&gender=%22" + gender + "%22&type=%22" + type.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSCharacterSet)! + "%22&image=%22" + data.images[0].stringByReplacingOccurrencesOfString("&", withString: "%26") + "%22&image2=%22" + data.images[1].stringByReplacingOccurrencesOfString("&", withString: "%26") + "%22&image3=%22" + data.images[2].stringByReplacingOccurrencesOfString("&", withString: "%26") + "%22"
         getJSON(url)
         // Go back to menu view controller
-        self.performSegueWithIdentifier("backEdit", sender: nil)
+        self.revealViewController().revealToggleAnimated(true)
     }
     
     // Textfield delegate method
